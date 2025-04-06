@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Contador";
+}
+
+<div class="inner">
+
+    <!-- Header -->
+    <header id="header">
+        <a href="index.html" class="logo"><strong>ColonIA</strong> by iCricket</a>
+    </header>
+
+    
+
+    <!-- Sección principal para el contador -->
+    <section id="contador">
+        <div class="content">
+            <header>
+                <h1>Página del Contador</h1>
+                <p>Administra los costos de producción e ingresos/egresos de la empresa.</p>
+            </header>
+
+            <!-- Botones para navegar a las páginas de costos e ingresos -->
+            <ul class="actions">
+                <li><a href="@Url.Action("RegistrarCostos", "Contador")" class="button big">Registrar Costos de Producción</a></li>
+                <li><a href="@Url.Action("HistorialCostos", "Contador")" class="button big">Historial de Costos</a></li>
+                <li><a href="@Url.Action("ActualizarCostos", "Contador")" class="button big">Actualizar Costos</a></li>
+                <li><a href="@Url.Action("RegistrarVenta", "Contador")" class="button big">Registrar Venta</a></li>
+                <li><a href="@Url.Action("RegistrarEgreso", "Contador")" class="button big">Registrar Egreso</a></li>
+
+            </ul>
+        </div>
+    </section>
+</div>

@@ -1,0 +1,74 @@
+﻿@{
+    ViewBag.Title = "Registrar Egresos por Materia Prima";
+}
+
+<div class="inner">
+
+    <!-- Header -->
+    <header id="header">
+        <a href="index.html" class="logo"><strong>ColonIA</strong> by iCricket</a>
+    </header>
+
+    <!-- Flecha para volver a la página de contador -->
+    <header id="header">
+        <a href="@Url.Action("Index", "Contador")" class="btn btn-success mb-3">
+            <i class="fas fa-arrow-left"></i> Volver
+        </a>
+    </header>
+
+    <!-- Sección para el registro de egresos por materia prima -->
+    <section id="registroEgresos">
+        <div class="content">
+            <header>
+                <h1>Registrar Egresos por Materia Prima</h1>
+                <p>Registra los detalles de la adquisición de materias primas.</p>
+            </header>
+
+            <!-- Formulario para registrar un egreso por materia prima -->
+            <form>
+                <label for="fechaEgreso">Fecha de Egreso:</label>
+                <input type="date" id="fechaEgreso" name="fechaEgreso" required />
+
+                <label for="materiaPrima">Materia Prima Adquirida:</label>
+                <input type="text" id="materiaPrima" name="materiaPrima" required />
+
+                <label for="cantidad">Cantidad Adquirida (en unidades):</label>
+                <input type="number" id="cantidad" name="cantidad" required />
+
+                <label for="costoUnidad">Costo por Unidad:</label>
+                <input type="number" id="costoUnidad" name="costoUnidad" step="0.01" required />
+
+                <label for="totalEgreso">Total de Egreso (Automático):</label>
+                <input type="number" id="totalEgreso" name="totalEgreso" step="0.01" disabled />
+
+                <label for="proveedor">Proveedor:</label>
+                <input type="text" id="proveedor" name="proveedor" required />
+
+                <label for="documentoRespaldo">Documento de Respaldo (Factura, Recibo):</label>
+                <input type="text" id="documentoRespaldo" name="documentoRespaldo" required />
+
+                <button type="submit" class="button big">Registrar Egreso</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Comprobante generado (esto es solo un ejemplo) -->
+    <section id="comprobante">
+        <div class="content">
+            <header>
+                <h2>Comprobante de Egreso</h2>
+                <p>Detalles de la adquisición registrada:</p>
+            </header>
+
+            <div class="comprobanteDetalles">
+                <p><strong>Fecha de Egreso:</strong> [Fecha]</p>
+                <p><strong>Materia Prima:</strong> [Materia Prima]</p>
+                <p><strong>Cantidad Adquirida:</strong> [Cantidad]</p>
+                <p><strong>Costo por Unidad:</strong> [Costo]</p>
+                <p><strong>Total Egreso:</strong> [Total]</p>
+                <p><strong>Proveedor:</strong> [Proveedor]</p>
+                <p><strong>Documento de Respaldo:</strong> [Documento]</p>
+            </div>
+        </div>
+    </section>
+</div>

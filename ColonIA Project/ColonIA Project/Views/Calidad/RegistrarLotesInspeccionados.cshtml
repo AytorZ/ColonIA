@@ -1,0 +1,53 @@
+﻿@{
+    ViewBag.Title = "Registrar Lotes Inspeccionados";
+}
+
+<div class="inner">
+    <!-- Header -->
+    <header id="header">
+        <a href="@Url.Action("Index", "Calidad")" class="btn btn-success mb-3">
+            <i class="fas fa-arrow-left"></i> Volver
+        </a>
+    </header>
+
+    <!-- Sección de formulario -->
+    <section id="registro-lotes">
+        <div class="content">
+            <header>
+                <h1>Registro de Lotes Inspeccionados</h1>
+                <p>Ingresa la información correspondiente a la inspección del lote.</p>
+            </header>
+
+            <form method="post" class="mt-4">
+                <div class="form-group">
+                    <label for="codigoLote">Código del Lote:</label>
+                    <input type="text" class="form-control" id="codigoLote" name="codigoLote" placeholder="Ej. LOTE123" required />
+                </div>
+
+                <div class="form-group mt-3">
+                    <label for="fechaInspeccion">Fecha de Inspección:</label>
+                    <input type="date" class="form-control" id="fechaInspeccion" name="fechaInspeccion" required />
+                </div>
+
+                <div class="form-group mt-3">
+                    <label for="nivelHumedad">Nivel de Humedad (%):</label>
+                    <input type="number" step="0.01" class="form-control" id="nivelHumedad" name="nivelHumedad" placeholder="Ej. 12.5" required />
+                </div>
+
+                <div class="form-group mt-3">
+                    <label for="contaminantes">Presencia de Contaminantes:</label>
+                    <select class="form-control" id="contaminantes" name="contaminantes" required>
+                        <option value="">Selecciona una opción</option>
+                        <option value="No">No</option>
+                        <option value="Sí">Sí</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-success btn-lg mt-4">Registrar Inspección</button>
+            </form>
+        </div>
+    </section>
+</div>
+
+<!-- Iconos FontAwesome (solo si no los has agregado globalmente) -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">

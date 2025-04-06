@@ -1,0 +1,68 @@
+﻿@{
+    ViewBag.Title = "Historial de Costos de Producción";
+}
+
+<div class="inner">
+
+    <!-- Header -->
+    <header id="header">
+        <a href="index.html" class="logo"><strong>ColonIA</strong> by iCricket</a>
+    </header>
+
+    <header id="header">
+        <a href="@Url.Action("Index", "Contador")" class="btn btn-success mb-3">
+            <i class="fas fa-arrow-left"></i> Volver
+        </a>
+    </header>
+
+    <!-- Sección para consultar historial de costos -->
+    <section id="costos">
+        <div class="content">
+            <header>
+                <h1>Historial de Costos de Producción</h1>
+                <p>Consulta los costos de producción registrados por lote, fecha o tipo de gasto.</p>
+            </header>
+
+            <!-- Filtros de búsqueda -->
+            <form>
+                <label for="filtroLote">Código de Lote:</label>
+                <input type="text" id="filtroLote" name="filtroLote" />
+
+                <label for="filtroFecha">Fecha:</label>
+                <input type="date" id="filtroFecha" name="filtroFecha" />
+
+                <label for="filtroGasto">Tipo de Gasto:</label>
+                <select id="filtroGasto" name="filtroGasto">
+                    <option value="insumos">Insumos</option>
+                    <option value="operativos">Operativos</option>
+                    <option value="indirectos">Indirectos</option>
+                </select>
+
+                <button type="submit" class="button big">Buscar</button>
+            </form>
+
+            <!-- Tabla de resultados -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>Código de Lote</th>
+                        <th>Fecha de Inicio</th>
+                        <th>Costo Total</th>
+                        <th>Costo por KG</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Aquí se mostrarán los resultados de la búsqueda -->
+                    <tr>
+                        <td>Lote001</td>
+                        <td>01/01/2025</td>
+                        <td>$5000</td>
+                        <td>$20</td>
+                        <td><a href="#">Actualizar</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</div>
