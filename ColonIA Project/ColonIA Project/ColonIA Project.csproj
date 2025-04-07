@@ -257,6 +257,7 @@
     <Content Include="Views\Produccion\Cosecha.cshtml" />
     <Content Include="Views\Produccion\CosechaDetalles.cshtml" />
     <Content Include="Views\Inventario\Recursos.cshtml" />
+    <Content Include="Views\Analisis\AnalisisAI.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
