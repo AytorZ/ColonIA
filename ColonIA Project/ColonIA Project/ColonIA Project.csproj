@@ -236,6 +236,7 @@
     <Content Include="Views\User\UsuariosAdmin.cshtml" />
     <Content Include="Views\User\UsuariosSupervisor.cshtml" />
     <Content Include="Views\User\Register.cshtml" />
+    <Content Include="Views\User\CambiarPassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -38,6 +38,11 @@ namespace ColonIA_Project.Controllers
         {
             return View();
         }
+        [HttpGet]
+        public ActionResult CambiarPassword()
+        {
+            return View();
+        }
     }
 
 
