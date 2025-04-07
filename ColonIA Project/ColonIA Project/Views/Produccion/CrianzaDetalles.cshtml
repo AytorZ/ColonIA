@@ -1,0 +1,93 @@
+﻿
+@{
+    ViewBag.Title = "CrianzaDetalles";
+}
+<div class="inner">
+    <header id="header">
+        <h2>Caja CC001</h2>
+        <ul class="icons">
+            <li><a href="@Url.Action("Crianza","Produccion")" class="icon solid fa-arrow-left"></a></li>
+        </ul>
+    </header>
+    <header class="main" style="margin-top:1%">
+        <h3>ID crianza: CN1302</h3>
+        <h4>Estado: Activo</h4>
+    </header>
+    <section>
+        <div class="features">
+            <article>
+                <span class="icon solid fa-utensils"></span>
+                <div class="content">
+                    <h3>Alimento</h3>
+                    <p>
+                        Tipo: Concentrado</br>
+                        Cantidad: 200g
+                    </p>
+                </div>
+            </article>
+            <article>
+                <span class="icon solid fa-water"></span>
+                <div class="content">
+                    <h3>Agua</h3>
+                    <p>
+                        Cantidad: 10ml
+                    </p>
+                </div>
+            </article>
+            <article>
+                <span class="icon solid fa-calendar"></span>
+                <div class="content">
+                    <h3>Tiempo</h3>
+                    <p>1 Semana</p>
+                </div>
+            </article>
+        </div>
+        <header class="main" style="margin-top:1%">
+            <h3>Reporte</h3>
+        </header>
+        <form method="post" action="#">
+            <div class="row gtr-uniform">
+                <div class="col-6 col-12-xsmall">
+                    <input type="number" name="demo-name" id="demo-name" value="" placeholder="Cantidad de alimento" />
+                </div>
+                <div class="col-6 col-12-xsmall">
+                    <select name="demo-category" id="demo-category">
+                        <option value="">- Tipo de Comida -</option>
+                        <option value="1">Concentrado</option>
+                        <option value="1">Albahaca</option>
+                        <option value="1">Menta</option>
+                    </select>
+                </div>
+                <div class="col-12">
+                    <input type="number" name="demo-name" id="demo-name" value="" placeholder="Cantidad de agua" />
+                </div>
+                <div class="col-6 col-12-small">
+                    <input type="radio" id="demo-priority-low" name="demo-priority" checked>
+                    <label for="demo-priority-low">Sin ponedero</label>
+                </div>
+                <div class="col-6 col-12-small">
+                    <input type="radio" id="demo-priority-normal" name="demo-priority">
+                    <label for="demo-priority-normal">Con ponedero</label>
+                </div>
+                <div class="col-12">
+                    <input type="checkbox" id="muertes" name="muertes">
+                    <label for="muertes">Muertes</label>
+                </div>
+                <div class="col-12">
+                    <input type="number" name="demo-name" id="demo-name" value="" placeholder="Cantidad de muertes" />
+                </div>
+                <!-- Break -->
+                <div class="col-12">
+                    <textarea name="demo-message" id="demo-message" placeholder="Detalles adicionales" rows="6"></textarea>
+                </div>
+                <!-- Break -->
+                <div class="col-12">
+                    <ul class="actions">
+                        <li><input type="submit" value="Crear Reporte" class="primary" /></li>
+                        <li><input type="reset" value="Cancelar" /></li>
+                    </ul>
+                </div>
+            </div>
+        </form>
+    </section>
+</div>

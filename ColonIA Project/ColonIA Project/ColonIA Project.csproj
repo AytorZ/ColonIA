@@ -123,6 +123,8 @@
     <Compile Include="Controllers\AnalisisController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\ProduccionController.cs" />
+    <Compile Include="Controllers\InventarioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -239,11 +241,17 @@
     <Content Include="Views\User\CambiarPassword.cshtml" />
     <Content Include="Views\User\PerfilUsuario.cshtml" />
     <Content Include="Views\Analisis\AnalisisChat.cshtml" />
+    <Content Include="Views\Produccion\Incubacion.cshtml" />
+    <Content Include="Views\Produccion\IncubacionDetalles.cshtml" />
+    <Content Include="Views\Produccion\Crianza.cshtml" />
+    <Content Include="Views\Produccion\CrianzaDetalles.cshtml" />
+    <Content Include="Views\Produccion\Cosecha.cshtml" />
+    <Content Include="Views\Produccion\CosechaDetalles.cshtml" />
+    <Content Include="Views\Inventario\Recursos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Produccion\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-grid.css.map" />
