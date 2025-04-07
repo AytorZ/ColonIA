@@ -1,0 +1,72 @@
+﻿
+@{
+    ViewBag.Title = "Register";
+}
+
+<div class="inner">
+
+    <!-- Header -->
+    <header id="header">
+        <a href="@Url.Action("Index", "Home")" class="logo"><strong>ColonIA</strong> by iCricket</a> 
+        <ul class="icons">
+            <li>
+                <a href="@Url.Action("UsuariosAdmin", "User")" class="icon solid fa-arrow-left"></a>
+            </li>
+        </ul>
+
+    </header>
+
+    <section class="vh-100 gradient-custom">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                    <div class="card bg-dark text-white" style="border-radius: 1rem;">
+                        <div class="card-body p-5 text-center">
+
+
+                            <div class="mb-md-5 mt-md-4 pb-3">
+                               
+                                <h2 class="fw-bold mb-2 text-uppercase" style="font-family: 'Roboto', sans-serif; font-size: 28px; color: #4CAF50;">Registro de Usuario</h2>
+                                <p class="text-white-50 mb-5" style="font-family: 'Roboto', sans-serif; font-size: 20px;">¡Por favor ingresa los datos del nuevo usuario!</p>
+
+                                <form id="registerForm" method="post">
+                                    <div class="mb-4">
+                                        <input type="text" id="fullName" name="fullName" class="form-control form-control-lg" placeholder="Nombre completo" required />
+                                    </div>
+
+                                    <div class="mb-4">
+                                        <input type="email" id="email" name="email" class="form-control form-control-lg" placeholder="Correo electrónico" required />
+                                    </div>
+
+                                    <div class="mb-4">
+                                        <select id="role" name="role" class="form-control form-control-lg" required>
+                                            <option value="">Selecciona un rol</option>
+                                            <option value="Administrador">Administrador</option>
+                                            <option value="Operador">Operador</option>
+                                            <option value="Supervisor">Supervisor</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="mb-4">
+                                        <input type="password" id="password" name="password" class="form-control form-control-lg" placeholder="Contraseña" required />
+                                    </div>
+
+                                    <div class="mb-4">
+                                        <input type="password" id="confirmPassword" name="confirmPassword" class="form-control form-control-lg" placeholder="Confirmar contraseña" required />
+                                    </div>
+
+                                    <button class="btn btn-outline-light btn-lg px-5" type="submit">Registrar</button>
+                                </form>
+
+
+                                <div id="formMessage" class="text-white mt-3" style="display: none;"></div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
