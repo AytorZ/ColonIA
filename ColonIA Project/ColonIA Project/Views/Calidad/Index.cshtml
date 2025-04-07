@@ -1,0 +1,60 @@
+﻿@{
+    ViewBag.Title = "Control de Calidad";
+}
+
+<div class="inner">
+
+    <!-- Header -->
+    <header id="header">
+        <a href="index.html" class="logo"><strong>ColonIA</strong> by iCricket</a>
+    </header>
+
+    
+
+    <!-- Sección principal para el encargado de control de calidad -->
+    <section id="control-calidad">
+        <div class="content">
+            <header>
+                <h1>Página del Control de Calidad</h1>
+                <p>Administra las inspecciones y el control de calidad de los lotes de producción.</p>
+            </header>
+
+            <!-- Contenedor para los botones -->
+            <div class="container">
+                <div class="row mb-4">
+                    <div class="col-md-4 mb-3">
+                        <a href="@Url.Action("RegistrarLotesInspeccionados", "Calidad")" class="button big btn btn-success w-100">Registro de Lotes Inspeccionados</a>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <a href="@Url.Action("ValidacionParametrosCalidad", "Calidad")" class="button big btn btn-success w-100">Validación de Parámetros de Calidad</a>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <a href="@Url.Action("RegistrarAnalisisLaboratorio", "Calidad")" class="button big btn btn-success w-100">Registro de Análisis de Laboratorio</a>
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-md-4 mb-3">
+                        <a href="@Url.Action("GenerarCertificadosCalidad", "Calidad")" class="button big btn btn-success w-100">Generación de Certificados de Calidad</a>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <a href="@Url.Action("GestionResultadosLaboratorio", "Calidad")" class="button big btn btn-success w-100">Gestión de Resultados de Laboratorio</a>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <a href="@Url.Action("SeguimientoHistorialCalidad", "Calidad")" class="button big btn btn-success w-100">Seguimiento del Historial de Calidad</a>
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-md-4 mb-3">
+                        <a href="@Url.Action("VerificacionPreviaEnvio", "Calidad")" class="button big btn btn-success w-100">Verificación Previa al Envío</a>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <a href="@Url.Action("GenerarReportesCalidad", "Calidad")" class="button big btn btn-success w-100">Generación de Reportes de Calidad</a>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <a href="@Url.Action("ComparacionCalidadPorLote", "Calidad")" class="button big btn btn-success w-100">Comparación de Calidad por Lote</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
