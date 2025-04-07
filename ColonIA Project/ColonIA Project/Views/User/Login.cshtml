@@ -10,7 +10,6 @@
         <a href="@Url.Action("Index", "Home")" class="logo"><strong>ColonIA</strong> by iCricket</a>
     </header>
 
-    <!-- Login Section -->
     <section class="vh-100 gradient-custom">
         <div class="container py-5 h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
@@ -30,7 +29,6 @@
                                     <input type="password" id="typePasswordX" class="form-control form-control-lg" placeholder="Contraseña" />
                                 </div>
 
-                                <!-- Link to trigger modal -->
                                 <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal">¿Olvidaste tu contraseña?</a></p>
 
                                 <button class="btn btn-outline-light btn-lg px-5" type="submit">Iniciar sesión</button>
@@ -45,7 +43,6 @@
 
 </div>
 
-<!-- Modal para recuperar contraseña -->
 <div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-labelledby="forgotPasswordModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -54,7 +51,6 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <!-- Formulario para ingresar correo -->
                 <div id="emailFormSection">
                     <p>Por favor, ingresa tu correo electrónico para recibir el código de verificación.</p>
                     <form id="emailForm">

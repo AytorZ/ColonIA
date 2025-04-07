@@ -7,10 +7,15 @@
 
     <!-- Header -->
     <header id="header">
-        <a href="@Url.Action("Index", "Home")" class="logo"><strong>ColonIA</strong> by iCricket</a>
+        <a href="@Url.Action("Index", "Home")" class="logo"><strong>ColonIA</strong> by iCricket</a> 
+        <ul class="icons">
+            <li>
+                <a href="@Url.Action("UsuariosAdmin", "User")" class="icon solid fa-arrow-left"></a>
+            </li>
+        </ul>
+
     </header>
 
-    <!-- Registration Section -->
     <section class="vh-100 gradient-custom">
         <div class="container py-5 h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
@@ -18,13 +23,13 @@
                     <div class="card bg-dark text-white" style="border-radius: 1rem;">
                         <div class="card-body p-5 text-center">
 
+
                             <div class="mb-md-5 mt-md-4 pb-3">
+                               
                                 <h2 class="fw-bold mb-2 text-uppercase" style="font-family: 'Roboto', sans-serif; font-size: 28px; color: #4CAF50;">Registro de Usuario</h2>
                                 <p class="text-white-50 mb-5" style="font-family: 'Roboto', sans-serif; font-size: 20px;">¡Por favor ingresa los datos del nuevo usuario!</p>
 
-                                <!-- Formulario de Registro -->
                                 <form id="registerForm" method="post">
-
                                     <div class="mb-4">
                                         <input type="text" id="fullName" name="fullName" class="form-control form-control-lg" placeholder="Nombre completo" required />
                                     </div>
@@ -53,7 +58,7 @@
                                     <button class="btn btn-outline-light btn-lg px-5" type="submit">Registrar</button>
                                 </form>
 
-                                <!-- Mensaje de error/success -->
+
                                 <div id="formMessage" class="text-white mt-3" style="display: none;"></div>
 
                             </div>

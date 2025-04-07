@@ -37,11 +37,11 @@
                         <li>
                             <span class="opener">Usuario</span>
                             <ul>
-                                <li><a href="#">Perfil</a></li>
-                                <li><a href="#">Administrador</a></li>
+                                <li><a href="@Url.Action("PerfilUsuario", "User")">Perfil</a></li>
+                                <li><a href="@Url.Action("UsuariosAdmin", "User")">Administrador</a></li>
                                 <li><a href="#">Operador</a></li>
-                                <li><a href="#">Supervisor</a></li>
-                                <li><a href="#">Control de Calidad</a></li>
+                                <li><a href="@Url.Action("UsuariosSupervisor", "User")">Supervisor</a></li>
+                                <li style="color: #fc4040;"><a href="#">Cerrar Sesión</a></li>
                             </ul>
                         </li>
                         <li>
@@ -56,7 +56,7 @@
                             <span class="opener">Analisis</span>
                             <ul>
                                 <li><a href="#">Vista General</a></li>
-                                <li><a href="#">Chat</a></li>
+                                <li><a href="@Url.Action("AnalisisChat", "Analisis")">Chat</a></li>
                             </ul>
                         </li>
                         <li>

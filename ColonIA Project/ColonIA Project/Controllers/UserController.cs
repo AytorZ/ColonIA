@@ -43,6 +43,13 @@ namespace ColonIA_Project.Controllers
         {
             return View();
         }
+
+        [HttpGet]
+        public ActionResult PerfilUsuario()
+        {
+            return View();
+        }
+
     }
 
 
