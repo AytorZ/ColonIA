@@ -6,8 +6,7 @@
 
     <!-- Header con botón de regreso -->
     <header id="header">
-        <a href="@Url.Action("Index", "Calidad")" class="btn btn-success mb-3">
-            <i class="fas fa-arrow-left"></i> Volver
+        <a href="@Url.Action("Index", "Calidad")" class="icon solid fa-arrow-left">
         </a>
     </header>
 
@@ -31,7 +30,7 @@
                 </div>
                 <div class="col-md-4">
                     <label for="tipoAnalisis" class="form-label">Tipo de Análisis:</label>
-                    <select class="form-select" id="tipoAnalisis" name="tipoAnalisis">
+                    <select id="tipoAnalisis" name="tipoAnalisis">
                         <option value="">-- Seleccionar --</option>
                         <option value="Proteína">Proteína</option>
                         <option value="Humedad">Humedad</option>
@@ -41,7 +40,7 @@
                 </div>
 
                 <div class="col-12 text-end">
-                    <button type="submit" class="btn btn-primary mt-3">
+                    <button type="submit" class="button primary fit mt-3">
                         <i class="fas fa-search"></i> Buscar
                     </button>
                 </div>
@@ -65,8 +64,8 @@
                         <td>Proteína</td>
                         <td>65%</td>
                         <td>
-                            <button class="btn btn-warning btn-sm me-2"><i class="fas fa-edit"></i> Actualizar</button>
-                            <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#justificacionModal"><i class="fas fa-trash"></i> Eliminar</button>
+                            <button class="button me-2"><i class="fas fa-edit"></i> Actualizar</button>
+                            <button class="button" data-bs-toggle="modal" data-bs-target="#justificacionModal"><i class="fas fa-trash"></i> Eliminar</button>
                         </td>
                     </tr>
                     <!-- Aquí irían más resultados -->

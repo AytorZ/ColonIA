@@ -6,8 +6,7 @@
 
     <!-- Header -->
     <header id="header">
-        <a href="@Url.Action("Index", "Calidad")" class="btn btn-success mb-3">
-            <i class="fas fa-arrow-left"></i> Volver
+        <a href="@Url.Action("Index", "Calidad")" class="icon solid fa-arrow-left">
         </a>
     </header>
 
@@ -42,7 +41,7 @@
 
                 <div class="form-group mt-3">
                     <label for="metales">Presencia de Metales Pesados:</label>
-                    <select class="form-control" id="metales" name="metales" required>
+                    <select id="metales" name="metales" required>
                         <option value="No">No</option>
                         <option value="Sí">Sí</option>
                     </select>
@@ -50,10 +49,10 @@
 
                 <div class="form-group mt-3">
                     <label for="otros">Otros Parámetros Nutricionales (opcional):</label>
-                    <textarea class="form-control" id="otros" name="otros" rows="3" placeholder="Ej. Hierro: 12mg, Calcio: 30mg..."></textarea>
+                    <textarea id="otros" name="otros" rows="3" placeholder="Ej. Hierro: 12mg, Calcio: 30mg..."></textarea>
                 </div>
 
-                <button type="submit" class="btn btn-primary mt-4">Guardar Análisis</button>
+                <button type="submit" class="button primary large mt-4">Guardar Análisis</button>
             </form>
         </div>
     </section>

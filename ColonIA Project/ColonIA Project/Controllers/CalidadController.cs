@@ -26,7 +26,7 @@ namespace ColonIA_Project.Controllers
 
         public ActionResult GenerarCertificadosCalidad()
         {
-            return View("RegistrarAnalisisLaboratorio");
+            return View("GenerarCertificadosCalidad");
         }
 
         public ActionResult GestionResultadosLaboratorio()

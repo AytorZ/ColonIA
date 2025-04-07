@@ -6,8 +6,7 @@
 
     <!-- Encabezado con botón de retorno -->
     <header id="header">
-        <a href="@Url.Action("Index", "Calidad")" class="btn btn-success mb-3">
-            <i class="fas fa-arrow-left"></i> Volver
+        <a href="@Url.Action("Index", "Calidad")" class="icon solid fa-arrow-left">
         </a>
     </header>
 
@@ -23,7 +22,7 @@
             <form class="mb-4">
                 <div class="mb-3">
                     <label for="lotesSeleccionados" class="form-label">Selecciona los códigos de lote:</label>
-                    <select multiple class="form-control" id="lotesSeleccionados" name="lotesSeleccionados">
+                    <select multiple id="lotesSeleccionados" name="lotesSeleccionados">
                         <option value="LOTE101">LOTE101</option>
                         <option value="LOTE102">LOTE102</option>
                         <option value="LOTE103">LOTE103</option>
@@ -32,7 +31,7 @@
                     </select>
                     <small class="form-text text-muted">Mantén presionada la tecla Ctrl (o Cmd en Mac) para seleccionar varios.</small>
                 </div>
-                <button type="submit" class="btn btn-primary">
+                <button type="submit" class="button primary large">
                     <i class="fas fa-balance-scale"></i> Comparar Lotes
                 </button>
             </form>
@@ -85,7 +84,7 @@
 
             <!-- Comparación visual (opcional) -->
             <div class="mt-4">
-                <button class="btn btn-outline-secondary">
+                <button class="button large">
                     <i class="fas fa-chart-bar"></i> Ver gráfico comparativo
                 </button>
             </div>
