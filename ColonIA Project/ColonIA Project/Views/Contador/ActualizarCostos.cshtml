@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "Actualizar Costos de Producción";
+}
+
+<div class="inner">
+
+    <!-- Header -->
+    <header id="header">
+        <a href="@Url.Action("Index", "Contador")" class="icon solid fa-arrow-left">
+        </a>
+    </header>
+
+    <!-- Sección para la actualización de costos de producción -->
+    <section id="costos">
+        <div class="content">
+            <header>
+                <h1>Actualizar Costos de Producción</h1>
+                <p>Modifica el costo total del lote de producción.</p>
+            </header>
+
+            <!-- Formulario para actualizar el costo total -->
+            <form>
+                <label for="codigoLote">Código de Lote:</label>
+                <input type="text" id="codigoLote" name="codigoLote" value="Lote001" disabled />
+
+                <label for="costoRegistrado">Costo Total Registrado:</label>
+                <input type="number" id="costoRegistrado" name="costoRegistrado" value="1000" disabled />
+
+                <label for="accionCosto">Selecciona la acción a realizar:</label>
+                <select id="accionCosto" name="accionCosto" required>
+                    <option value="agregar">Agregar Costo</option>
+                    <option value="quitar">Quitar Costo</option>
+                </select>
+
+                <label for="montoCambio">Monto a agregar o quitar:</label>
+                <input type="number" id="montoCambio" name="montoCambio" value="0" required />
+
+                <button type="submit" class="button primary mt-4">Actualizar Costo Total</button>
+            </form>
+        </div>
+    </section>
+</div>

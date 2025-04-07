@@ -1,0 +1,78 @@
+﻿@{
+    ViewBag.Title = "Registro Detallado de Costos de Producción";
+}
+
+<div class="inner">
+
+    <!-- Header -->
+    <header id="header">
+        <a href="@Url.Action("Index", "Contador")" class="icon solid fa-arrow-left">
+        </a>
+    </header>
+
+    <!-- Sección para el registro de costos de producción -->
+    <section id="costos">
+        <div class="content">
+            <header>
+                <h1>Registro Detallado de Costos de Producción</h1>
+                <p>Ingresa los detalles del lote de producción para registrar los costos.</p>
+            </header>
+
+            <!-- Formulario para ingresar los datos -->
+            <form>
+                <label for="codigoLote">Código de Lote:</label>
+                <input type="text" id="codigoLote" name="codigoLote" required />
+
+                <label for="fechaInicio">Fecha de Inicio:</label>
+                <input type="date" id="fechaInicio" name="fechaInicio" required />
+
+                <label for="fechaFin">Fecha de Fin:</label>
+                <input type="date" id="fechaFin" name="fechaFin" required />
+
+                <h3>Costos de Insumos</h3>
+                <label for="cantidadAlimento">Cantidad de Alimento (kg):</label>
+                <input type="number" id="cantidadAlimento" name="cantidadAlimento" required />
+
+                <label for="costoAlimento">Costo de Alimento (por unidad):</label>
+                <input type="number" id="costoAlimento" name="costoAlimento" required />
+
+                <label for="costoTotalAlimento">Costo Total de Alimento:</label>
+                <input type="number" id="costoTotalAlimento" name="costoTotalAlimento" required />
+
+                <label for="cantidadAgua">Cantidad de Agua (litros):</label>
+                <input type="number" id="cantidadAgua" name="cantidadAgua" required />
+
+                <label for="costoAgua">Costo de Agua (por unidad):</label>
+                <input type="number" id="costoAgua" name="costoAgua" required />
+
+                <label for="costoTotalAgua">Costo Total de Agua:</label>
+                <input type="number" id="costoTotalAgua" name="costoTotalAgua" required />
+
+                <h3>Costos Operativos</h3>
+                <label for="costoElectricidad">Costo de Electricidad:</label>
+                <input type="number" id="costoElectricidad" name="costoElectricidad" required />
+
+                <label for="costoManoObra">Costo de Mano de Obra:</label>
+                <input type="number" id="costoManoObra" name="costoManoObra" required />
+
+                <label for="costoMantenimiento">Costo de Mantenimiento:</label>
+                <input type="number" id="costoMantenimiento" name="costoMantenimiento" required />
+
+                <h3>Costos Indirectos</h3>
+                <label for="gastosAdministrativos">Gastos Administrativos:</label>
+                <input type="number" id="gastosAdministrativos" name="gastosAdministrativos" required />
+
+                <label for="gastosLogistica">Gastos de Logística:</label>
+                <input type="number" id="gastosLogistica" name="gastosLogistica" required />
+
+                <label for="costoTotalLote">Costo Total del Lote:</label>
+                <input type="number" id="costoTotalLote" name="costoTotalLote" required />
+
+                <label for="costoKgHarina">Costo por Kilogramo de Harina:</label>
+                <input type="number" id="costoKgHarina" name="costoKgHarina" required />
+
+                <button type="submit" class="button primary large mt-4">Registrar Costos</button>
+            </form>
+        </div>
+    </section>
+</div>
