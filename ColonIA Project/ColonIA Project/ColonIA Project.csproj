@@ -115,9 +115,9 @@
     <Compile Include="Controllers\ContadorController.cs" />
     <Compile Include="Controllers\AnalisisController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InventarioController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\ProduccionController.cs" />
-    <Compile Include="Controllers\InventarioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -257,8 +257,13 @@
     <Content Include="Views\Produccion\CrianzaDetalles.cshtml" />
     <Content Include="Views\Produccion\Cosecha.cshtml" />
     <Content Include="Views\Produccion\CosechaDetalles.cshtml" />
-    <Content Include="Views\Inventario\Recursos.cshtml" />
     <Content Include="Views\Analisis\AnalisisAI.cshtml" />
+    <Content Include="Views\Inventario\AsignarRecurso.cshtml" />
+    <Content Include="Views\Inventario\Categorias.cshtml" />
+    <Content Include="Views\Inventario\CreacionRecurso.cshtml" />
+    <Content Include="Views\Inventario\HistorialInventario.cshtml" />
+    <Content Include="Views\Inventario\HistorialRecursos.cshtml" />
+    <Content Include="Views\Inventario\Recursos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
