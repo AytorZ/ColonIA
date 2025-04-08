@@ -26,7 +26,7 @@
                 <!-- Menu -->
                 <nav id="menu">
                     <header class="major">
-                        <h2>Menu</h2>
+                        <a href="@Url.Action("Index","Home")"><h2>Menu</h2></a>
                     </header>
                     <ul>
                         <li>
@@ -36,7 +36,6 @@
                                 <li><a href="@Url.Action("UsuariosAdmin", "User")">Administrador</a></li>
                                 <li><a href="#">Operador</a></li>
                                 <li><a href="@Url.Action("UsuariosSupervisor", "User")">Supervisor</a></li>
-                                <li style="color: #fc4040;"><a href="#">Cerrar Sesión</a></li>
                             </ul>
                         </li>
                         <li>
@@ -68,6 +67,10 @@
                                 <li><a href="#">Historial</a></li>
                             </ul>
                         </li>
+
+                        <li><a href="#">Iniciar Sesión</a></li>
+                        <li style="color: #fc4040;"><a href="#">Cerrar Sesión</a></li>
+                    
                     </ul>
                 </nav>
             </div>
