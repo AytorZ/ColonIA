@@ -13,5 +13,10 @@ namespace ColonIA_Project.Controllers
         {
             return View();
         }
+        public ActionResult AnalisisAI()
+        {
+            return View();
+        }
     }
+
 }
