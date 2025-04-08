@@ -1,0 +1,65 @@
+﻿@{
+    ViewBag.Title = "Registrar Venta de Harina de Grillo";
+}
+
+<div class="inner">
+
+    <!-- Header -->
+    <header id="header">
+        <a href="@Url.Action("Index", "Contador")" class="icon solid fa-arrow-left">
+        </a>
+    </header>
+
+    <!-- Sección para el registro de ventas de harina de grillo -->
+    <section id="registroVenta">
+        <div class="content">
+            <header>
+                <h1>Registrar Venta de Harina de Grillo</h1>
+                <p>Registra los detalles de una nueva venta de harina de grillo.</p>
+            </header>
+
+            <!-- Formulario para registrar una venta -->
+            <form>
+                <label for="fechaVenta">Fecha de Venta:</label>
+                <input type="date" id="fechaVenta" name="fechaVenta" required />
+
+                <label for="cliente">Cliente:</label>
+                <input type="text" id="cliente" name="cliente" required />
+
+                <label for="montoVenta">Monto de la Venta:</label>
+                <input type="number" id="montoVenta" name="montoVenta" step="0.01" required />
+
+                <label for="medioPago">Medio de Pago:</label>
+                <select id="medioPago" name="medioPago" required>
+                    <option value="efectivo">Efectivo</option>
+                    <option value="tarjeta">Tarjeta de Crédito/Débito</option>
+                    <option value="transferencia">Transferencia Bancaria</option>
+                    <option value="otros">Otros</option>
+                </select>
+
+                <label for="documentoRespaldo">Documento de Respaldo:</label>
+                <input type="text" id="documentoRespaldo" name="documentoRespaldo" required />
+
+                <button type="submit" class="button primary mt-4">Registrar Venta</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Comprobante generado (esto es solo un ejemplo) -->
+    <section id="comprobante">
+        <div class="content">
+            <header>
+                <h2>Comprobante de Venta</h2>
+                <p>Detalles de la venta registrada:</p>
+            </header>
+
+            <div class="comprobanteDetalles">
+                <p><strong>Fecha de Venta:</strong> [Fecha]</p>
+                <p><strong>Cliente:</strong> [Cliente]</p>
+                <p><strong>Monto de la Venta:</strong> [Monto]</p>
+                <p><strong>Medio de Pago:</strong> [Medio de Pago]</p>
+                <p><strong>Documento de Respaldo:</strong> [Documento]</p>
+            </div>
+        </div>
+    </section>
+</div>

@@ -1,0 +1,75 @@
+﻿@{
+    ViewBag.Title = "Validación de Parámetros de Calidad";
+}
+
+<div class="inner">
+    <!-- Header -->
+    <header id="header">
+        <a href="@Url.Action("Index", "Calidad")" class="icon solid fa-arrow-left">
+        </a>
+    </header>
+
+    <!-- Sección de validación de parámetros -->
+    <section id="validacion-calidad">
+        <div class="content">
+            <header>
+                <h1>Validación de Parámetros de Calidad</h1>
+                <p>Consulta, actualiza o elimina datos del historial de inspecciones.</p>
+            </header>
+
+            <!-- Simulación de búsqueda -->
+            <form method="get" class="mt-4">
+                <div class="form-group">
+                    <label for="codigoLote">Código del Lote:</label>
+                    <input type="text" class="form-control" id="codigoLote" name="codigoLote" placeholder="Ej. LOTE123" required />
+                </div>
+                <button type="submit" class="button primary mt-3 large icon solid fa-search">Buscar Inspección</button>
+            </form>
+
+            <!-- Simulación de resultados encontrados -->
+            <div class="mt-5">
+                <h4>Resultado de Inspección Encontrado</h4>
+
+                <form method="post">
+                    <div class="form-group mt-3">
+                        <label for="fecha">Fecha de Inspección:</label>
+                        <input type="date" class="form-control" id="fecha" value="2025-04-06" required />
+                    </div>
+
+                    <div class="form-group mt-3">
+                        <label for="humedad">Nivel de Humedad (%):</label>
+                        <input type="number" step="0.01" class="form-control" id="humedad" value="13.4" required />
+                    </div>
+
+                    <div class="form-group mt-3">
+                        <label for="contaminantes">Presencia de Contaminantes:</label>
+                        <select class="form-control" id="contaminantes" required>
+                            <option>No</option>
+                            <option selected>Sí</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group mt-3">
+                        <label for="estado">Estado del Lote:</label>
+                        <select class="form-control" id="estado" required>
+                            <option>Conforme</option>
+                            <option selected>No conforme</option>
+                        </select>
+                    </div>
+
+                    <div class="mt-4 d-flex gap-3">
+                        <button type="submit" class="button primary mt-3 large">Actualizar Inspección</button>
+                        <button type="button" class="button mt-3 large">Eliminar Inspección</button>
+                    </div>
+
+                    <div class="alert alert-info mt-4">
+                        * Todas las acciones serán notificadas y registradas en el historial de cambios.
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- FontAwesome para íconos -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">

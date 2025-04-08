@@ -25,6 +25,9 @@ footer, header, hgroup, menu, nav, section {
     display: block;
 }
 
+
+
+
 body {
     line-height: 1;
 }
@@ -1795,6 +1798,7 @@ input[type="email"],
 input[type="tel"],
 input[type="search"],
 input[type="url"],
+input[type="date"],
 select,
 textarea {
     -moz-appearance: none;
@@ -1820,6 +1824,7 @@ textarea {
     input[type="tel"]:invalid,
     input[type="search"]:invalid,
     input[type="url"]:invalid,
+    input[type="date"]:invalid,
     select:invalid,
     textarea:invalid {
         box-shadow: none;
@@ -1832,6 +1837,7 @@ textarea {
     input[type="tel"]:focus,
     input[type="search"]:focus,
     input[type="url"]:focus,
+    input[type="date"]:focus,
     select:focus,
     textarea:focus {
         border-color: #29a84f;
@@ -1868,6 +1874,7 @@ input[type="email"],
 input[type="tel"],
 input[type="search"],
 input[type="url"],
+input[type="date"],
 select {
     height: 2.75em;
 }
@@ -2015,6 +2022,7 @@ input[type="radio"] {
         font-family: 'Font Awesome 5 Free';
         font-weight: 400;
     }
+
 
     .icon > .label {
         display: none;
@@ -2529,7 +2537,7 @@ button,
         input[type="button"].primary:hover,
         button.primary:hover,
         .button.primary:hover {
-            background-color: #f67878;
+            background-color: #118F37;
         }
 
         input[type="submit"].primary:active,
