@@ -296,6 +296,15 @@ hr {
     text-align: right;
 }
 
+.box > .card-headerCus {
+    margin-bottom: 0;
+    background-color: #29a84f;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.175);
+}
+
 /* Row */
 .row {
     display: flex;

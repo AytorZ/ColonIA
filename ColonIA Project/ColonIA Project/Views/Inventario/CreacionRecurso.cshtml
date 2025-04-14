@@ -1,75 +1,25 @@
-﻿
-@{
-    ViewBag.Title = "CreacionRecurso";
+﻿@{
+
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<style>
-    .card {
-        border-radius: 10px;
-        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-    }
-
-    .card-header {
-        background-color: #007bff;
-        color: #fff;
-        text-align: center;
-        padding: 20px;
-        font-size: 1.5rem;
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
-    }
-
-    .form-group input, .form-group select {
-        border-radius: 5px;
-        border: 1px solid #ccc;
-        padding: 10px;
-        width: 100%;
-        font-size: 1rem;
-    }
-
-        .form-group input:focus, .form-group select:focus {
-            border-color: #007bff;
-        }
-
-    .btn-submit {
-        background-color: white;
-        color: #fff;
-        border: none;
-        padding: 12px 30px;
-        font-size: 1.2rem;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-    }
-
-        .btn-submit:hover {
-            background-color: white;
-        }
-
-    .back-btn {
-        color: #007bff;
-        text-decoration: none;
-        font-size: 1.1rem;
-    }
-
-        .back-btn:hover {
-            text-decoration: underline;
-        }
-</style>
-    
 
 <div class="inner">
-    <section style="justify-content: center">
-        <div class="card" style="width: 500px;">
-            <div class="card-header">
-                <strong>Registro de Recursos</strong>
-            </div>
-            <div class="card-body">
-                <a href="/Inventario/Recursos" class="back-btn">
-                    <i class="fas fa-arrow-left"></i> Volver a Recursos
-                </a>
-                <hr>
+    
 
+    <section>
+        <header class="main">
+            <h4>
+                <a href="/Inventario/Recursos" class="icon solid fa-arrow-left">
+                    Volver a Recursos
+                </a>
+            </h4>
+        </header>
+        <div class="box">
+            <div class="card-headerCus">
+                <h2>Registro de Recursos</h2>
+            </div>
+
+            <div class="card-body">
                 <h4 class="text-center mb-4">Ingresa los detalles del nuevo recurso</h4>
 
                 <form id="resourceForm" method="post">
@@ -107,7 +57,7 @@
                             <option value="Materiales">Materiales</option>
                         </select>
                     </div>
-                    <button type="submit" class="btn-submit btn-block">Registrar Recurso</button>
+                    <button type="submit" class="buttom primary">Registrar Recurso</button>
                 </form>
             </div>
         </div>
