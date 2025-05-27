@@ -1,8 +1,8 @@
-﻿<!DOCTYPE HTML>
-<html>
+﻿<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>ColonIA</title>
     <meta charset="utf-8" />
+    <title>ColonIA</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link href="~/Assets/css/main.css" rel="stylesheet" />
 </head>
@@ -11,13 +11,13 @@
     <!-- Wrapper -->
     <div id="wrapper">
 
-        <!-- Main -->
+        <!-- Contenido -->
         <div id="main">
             @RenderBody()
         </div>
 
         <!-- Sidebar -->
-        <div id="sidebar">
+        <aside id="sidebar">
             <div class="inner">
 
                 <!-- Menu -->
@@ -26,6 +26,8 @@
                         <h2>Menu</h2>
                     </header>
                     <ul>
+
+                        <!-- Usuario -->
                         <li>
                             <span class="opener">Usuario</span>
                             <ul>
@@ -34,32 +36,41 @@
                                 <li><a href="#">Operador</a></li>
                                 <li><a href="#">Supervisor</a></li>
                                 <li><a href="#">Control de Calidad</a></li>
+                                <li>@Html.Partial("_LoginPartial")</li>
                             </ul>
                         </li>
+
+                        <!-- Produccion -->
                         <li>
-                            <span class="opener">Produccion</span>
+                            <span class="opener">Producción</span>
                             <ul>
-                                <li><a href="#">Incubacion</a></li>
+                                <li><a href="#">Incubación</a></li>
                                 <li><a href="#">Crianza</a></li>
                                 <li><a href="#">Cosecha</a></li>
                             </ul>
                         </li>
+
+                        <!-- Analisis -->
                         <li>
-                            <span class="opener">Analisis</span>
+                            <span class="opener">Análisis</span>
                             <ul>
                                 <li><a href="#">Vista General</a></li>
                                 <li><a href="#">Chat</a></li>
                             </ul>
                         </li>
+
+                        <!-- Calidad -->
                         <li>
                             <span class="opener">Calidad</span>
                             <ul>
-                                <li><a href="#">Inspeccion</a></li>
+                                <li><a href="#">Inspección</a></li>
                                 <li><a href="#">Resultados</a></li>
                                 <li><a href="#">Costos</a></li>
                                 <li><a href="#">Finanzas</a></li>
                             </ul>
                         </li>
+
+                        <!-- Inventario -->
                         <li>
                             <span class="opener">Inventario</span>
                             <ul>
@@ -67,10 +78,12 @@
                                 <li><a href="#">Historial</a></li>
                             </ul>
                         </li>
+
                     </ul>
                 </nav>
+
             </div>
-        </div>
+        </aside>
 
     </div>
 
@@ -80,6 +93,7 @@
     <script src="~/Assets/js/breakpoints.min.js"></script>
     <script src="~/Assets/js/util.js"></script>
     <script src="~/Assets/js/main.js"></script>
+    @RenderSection("Scripts", required: false)
 
 </body>
 </html>
