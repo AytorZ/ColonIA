@@ -1,0 +1,146 @@
+﻿@{
+    ViewBag.Title = "AnalisisAI";
+}
+
+<div class="inner" style="margin: 0 auto; width: 80%;">
+
+    <!-- Header -->
+    <header id="header">
+        <a href="@Url.Action("Index", "Home")" class="logo"><strong>ColonIA</strong> by iCricket</a>
+        <ul class="icons">
+
+            <li>
+                <i class="icon solid fa-bell"></i>
+                <span class=" badge">1</span>
+
+            </li>
+            <li>
+                <i class="icon solid fa-exclamation-circle"></i>
+                <span class=" badge">1</span>
+
+            </li>
+
+        </ul>
+
+
+
+    </header>
+
+    <header class="main" style="margin-top:1%">
+        <h1>AnalisisAI</h1>
+    </header>
+
+    <div id="prediccion-produccion" class="section" style="margin-bottom: 1cm;">
+        <h2>Predicción de Producción de Harina</h2>
+
+        <div class="form-group">
+            <label for="historicoDatos">Datos Históricos de Producción:</label>
+            <input type="text" class="form-control" id="historicoDatos" placeholder="Ingrese datos históricos de producción">
+        </div>
+
+        <button id="btnPrediccion" class="button primary mt-4">Obtener Predicción</button>
+      
+
+            <div id="resultadoPrediccion" class="mt-4">
+                <h3>Predicción para el próximo ciclo:</h3>
+                <p>Producción estimada: <span id="produccionEstimacion">0</span> kg</p>
+
+                <img src="https://img.freepik.com/vector-gratis/grafico-barras-comparacion-cinco-opciones_1262-4420.jpg?t=st=1744068808~exp=1744072408~hmac=acd8622acf9c1e66413c121a1b9c8d0ae74d5a731bea23cb70439773b3394abf&w=1060" alt="Gráfico de Predicción" class="img-fluid">
+            </div>
+        </div>
+
+        <div id="recomendaciones-automaticas" class="section" style="margin-bottom: 1cm;">
+            <h2>Recomendaciones Automáticas para Optimización</h2>
+
+            <div class="form-group">
+                <label for="parametros">Condiciones Actuales (Temperatura, Alimentación, etc.):</label>
+                <input type="text" class="form-control" id="parametros" placeholder="Ingrese las condiciones actuales">
+            </div>
+
+            <button id="btnRecomendaciones" class="button primary mt-4">Generar Recomendaciones</button>
+
+            <div id="resultadoRecomendaciones" class="mt-4">
+                <h3>Recomendaciones:</h3>
+                <ul id="listaRecomendaciones">
+                </ul>
+            </div>
+        </div>
+
+        <div id="eficiencia-recursos" class="section" style="margin-bottom: 1cm;">
+            <h2>Eficiencia en el Uso de Recursos</h2>
+
+            <div class="form-group">
+                <label for="periodo">Selecciona el Período:</label>
+                <input type="date" class="form-control" id="periodo">
+            </div>
+
+            <button id="btnEficiencia" class="button primary mt-4">Generar Informe de Eficiencia</button>
+
+            <div id="resultadoEficiencia" class="mt-4">
+                <h3>Informe de Eficiencia:</h3>
+                <p><strong>Lote:</strong> <span id="loteEficiente">Lote 1</span></p>
+                <p><strong>Porcentaje de Eficiencia:</strong> <span id="porcentajeEficiencia">85%</span></p>
+
+                <img src="https://img.freepik.com/vector-gratis/grafico-barras-comparacion-cinco-opciones_1262-4420.jpg?t=st=1744068808~exp=1744072408~hmac=acd8622acf9c1e66413c121a1b9c8d0ae74d5a731bea23cb70439773b3394abf&w=1060" alt="Gráfico de Eficiencia" class="img-fluid">
+            </div>
+        </div>
+
+        <div id="irregularidades-produccion" class="section" style="margin-bottom: 1cm;">
+            <h2>Detección de Irregularidades en la Producción</h2>
+
+            <div class="form-group">
+                <label for="parametrosProduccion">Ingrese parámetros de producción:</label>
+                <input type="text" class="form-control" id="parametrosProduccion" placeholder="Ingrese valores de producción diaria">
+            </div>
+
+            <button id="btnIrregularidades" class="button primary mt-4">Verificar Irregularidades</button>
+
+            <div id="resultadoIrregularidades" class="mt-4">
+                <h3>Irregularidades Detectadas:</h3>
+                <ul id="listaIrregularidades">
+                </ul>
+            </div>
+        </div>
+
+        <div id="generacion-reportes" class="section" style="margin-bottom: 1cm;">
+            <h2>Generación de Reportes</h2>
+
+            <div class="form-group">
+                <label for="tipoReporte">Tipo de Reporte:</label>
+                <select class="form-control" id="tipoReporte">
+                    <option value="mensual">Mensual</option>
+                    <option value="semanal">Semanal</option>
+                </select>
+            </div>
+
+            <button id="btnGenerarReporte" class="button primary mt-4">Generar Reporte</button>
+
+            <div id="resultadoReporte" class="mt-4">
+                <h3>Reporte Generado:</h3>
+                <p><strong>Período:</strong> <span id="periodoReporte">Enero 2023</span></p>
+                <p><strong>Producción Total:</strong> <span id="produccionTotal">1000 kg</span></p>
+
+                <button id="btnExportarPDF" class="button mt-4">Exportar a PDF</button>
+                <button id="btnExportarExcel" class="button mt-4">Exportar a Excel</button>
+            </div>
+        </div>
+
+        <div id="simulacion-escenarios" class="section" style="margin-bottom: 1cm;">
+            <h2>Simulación de Escenarios Productivos</h2>
+
+            <div class="form-group">
+                <label for="parametrosSimulacion">Parámetros de Simulación (Temperatura, Alimentación, etc.):</label>
+                <input type="text" class="form-control" id="parametrosSimulacion" placeholder="Ingrese los parámetros de simulación">
+            </div>
+
+            <button id="btnSimulacion" class="button primary mt-4">Generar Simulación</button>
+
+            <div id="resultadoSimulacion" class="mt-4">
+                <h3>Resultados de la Simulación:</h3>
+                <p><strong>Escenario 1:</strong> <span id="escenario1">Producción óptima</span></p>
+
+                <img src="https://img.freepik.com/vector-gratis/grafico-barras-comparacion-cinco-opciones_1262-4420.jpg?t=st=1744068808~exp=1744072408~hmac=acd8622acf9c1e66413c121a1b9c8d0ae74d5a731bea23cb70439773b3394abf&w=1060" alt="Gráfico de Simulación" class="img-fluid">
+            </div>
+        </div>
+
+    </div>
