@@ -1,0 +1,77 @@
+﻿    <div id="wrapper">
+        <div id="main">
+            <div class="inner">
+                <header id="header" style="margin-bottom: 1cm;">
+                    <a href='/' class="logo"><strong>ColonIA</strong> by iCricket</a>
+                </header>
+            </div>
+
+            <div class="container mt-7">
+                <h2 class="mb-5">Historial de Movimientos de Inventario</h2>
+
+                <div class="card shadow">
+                    <div class="table-responsive">
+                        <table class="table align-items-center table-flush">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">Nombre del Objeto</th>
+                                    <th scope="col">Fecha de Entrada</th>
+                                    <th scope="col">Fecha de Salida</th>
+                                    <th scope="col">Motivo del Movimiento</th>
+                                    <th scope="col">Persona a Cargo</th>
+                                    <th scope="col">Razón del Movimiento</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Elemento</td>
+                                    <td>03/01/2025</td>
+                                    <td>05/01/2025</td>
+                                    <td>Préstamo</td>
+                                    <td>Sergio</td>
+                                    <td>Soporte</td>
+                                </tr>
+                                <tr>
+                                    <td>Laptop Dell</td>
+                                    <td>12/12/2024</td>
+                                    <td>---</td>
+                                    <td>Ingreso</td>
+                                    <td>Aytor</td>
+                                    <td>Compra de nuevo equipo</td>
+                                </tr>
+                                <tr>
+                                    <td>Proyector Epson</td>
+                                    <td>20/11/2024</td>
+                                    <td>01/12/2024</td>
+                                    <td>Reasignación</td>
+                                    <td>Juan</td>
+                                    <td>Traslado a sala de juntas</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="card-footer py-4">
+                        <div class="text-right">
+                            <button class="button" onclick="exportarHistorialPDF()">Exportar Historial a PDF</button>
+                            <button class="button" onclick="exportarHistorialExcel()">Exportar Historial a Excel</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function exportarHistorialPDF() {
+            alert("Su archivo ha sido exportado a PDF");
+        }
+        function exportarHistorialExcel() {
+            alert("Su archivo ha sido exportado a Excel");
+        }
+
+    </script>
