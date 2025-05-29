@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "Contador";
+}
+
+<div class="inner">
+    <!-- Header -->
+    <header id="header">
+        <a href="index.html" class="logo"><strong>ColonIA</strong> by iCricket</a>
+    </header>
+
+    <!-- Sección principal para el contador -->
+    <section id="contador">
+        <div class="content">
+            <header>
+                <h1>Página del Supervisor</h1>
+                <p>Administra los costos de producción e ingresos/egresos de la empresa.</p>
+            </header>
+
+            <!-- Botones para navegar a las páginas de costos e ingresos -->
+            <div class="container">
+                <div class="row mb-4">
+                    <div class="col-md-4 mb-3">
+                        <a href="@Url.Action("RegistrarCostos", "Contador")" class="button big btn btn-success w-100">Registrar Costos de Producción</a>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <a href="@Url.Action("HistorialCostos", "Contador")" class="button big btn btn-success w-100">Historial de Costos</a>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <a href="@Url.Action("ActualizarCostos", "Contador")" class="button big btn btn-success w-100">Actualizar Costos</a>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <a href="@Url.Action("RegistrarVenta", "Contador")" class="button big btn btn-success w-100">Registrar Venta</a>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <a href="@Url.Action("RegistrarEgreso", "Contador")" class="button big btn btn-success w-100">Registrar Egreso</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
