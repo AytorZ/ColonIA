@@ -11,8 +11,7 @@ namespace ColonAI.Controllers
         }
 
         [HttpGet]
-        public ActionResult UsuariosAdmin
-            ()
+        public ActionResult UsuariosAdmin()
         {
             return View();
         }
