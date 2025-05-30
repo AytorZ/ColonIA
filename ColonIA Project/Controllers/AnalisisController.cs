@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace ColonAI.Controllers
+namespace ColonIA.Controllers
 {
     public class AnalisisController : Controller
     {

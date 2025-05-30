@@ -1,8 +1,8 @@
 using System.Diagnostics;
-using ColonAI.Models;
+using ColonIA.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ColonAI.Controllers
+namespace ColonIA.Controllers
 {
     public class HomeController : Controller
     {
