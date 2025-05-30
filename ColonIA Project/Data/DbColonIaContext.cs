@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using ColonAI.Models;
+using ColonIA.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace ColonAI.Data;
+namespace ColonIA.Data;
 
 public partial class DbColonIaContext : DbContext
 {

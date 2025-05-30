@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ColonAI.Models;
+namespace ColonIA.Models;
 
 public partial class Inventario
 {
