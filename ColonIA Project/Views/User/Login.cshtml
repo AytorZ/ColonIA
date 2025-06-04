@@ -24,7 +24,7 @@
                                     <p class="text-white-50 mb-5" style="font-family: 'Roboto', sans-serif; font-size: 20px;">¡Por favor ingresa tu correo electrónico y contraseña!</p>
 
                                     <div class="mb-4">
-                                        <input type="email" id="typeEmailX" class="form-control form-control-lg" placeholder="Correo" asp-for="Correo"/>
+                                        <input type="email" id="correoForm" name="email" class="form-control form-control-lg" placeholder="Correo" asp-for="Correo" />
                                     </div>
 
                                     <div class="mb-4">
@@ -57,7 +57,7 @@
                     <p>Por favor, ingresa tu correo electrónico para recibir el código de verificación.</p>
                     <form id="emailForm">
                         <div class="mb-4">
-                            <input type="email" id="email" class="form-control" placeholder="Correo electrónico" required />
+                            <input type="email" id="email" name="correo" class="form-control" placeholder="Correo electrónico" required />
                         </div>
                         <button class="btn btn-outline-light btn-lg px-5" type="submit">Enviar Código</button>
                     </form>
@@ -65,33 +65,64 @@
                 </div>
 
                 <div id="verificationFormSection" style="display: none;">
-                    <h4 class="text-white">Ingresa el código de verificación enviado a tu correo</h4>
+                    <h4 class="text-black">Ingresa el código de verificación enviado a tu correo</h4>
                     <form id="codeForm">
                         <div class="mb-4">
                             <input type="text" id="verificationCode" class="form-control" placeholder="Código de verificación" required />
                         </div>
                         <button class="btn btn-outline-light btn-lg px-5" type="submit" id="verifyCodeBtn">Verificar Código</button>
                     </form>
-                    <div id="verificationMessage" class="text-white mt-3" style="display: none;"></div>
+                    <div id="verificationMessage" class="text-black mt-3" style="display: none;"></div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<script>
-    document.getElementById('emailForm').addEventListener('submit', function (e) {
-        e.preventDefault();
-
-        document.getElementById('emailFormSection').style.display = 'none';
-        document.getElementById('verificationFormSection').style.display = 'block';
-    });
-
-    document.getElementById('verifyCodeBtn').addEventListener('click', function(e) {
-        e.preventDefault();
-
-         window.location.href = '@Url.Action("CambiarPassword", "User")';
-    });;
-</script>
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+@section Scripts {
+    <script>
+        document.getElementById('emailForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+
+            const formData = new FormData();
+            formData.append('correo', email);  
+
+            const response = await fetch('/User/EnviarCodigo', {
+                method: 'POST',
+                body: formData
+            });
+
+            const result = await response.json();
+            if (result.success) {
+                document.getElementById('emailFormSection').style.display = 'none';
+                document.getElementById('verificationFormSection').style.display = 'block';
+            } else {
+                const messageElem = document.getElementById('formMessage');
+                messageElem.textContent = result.message;
+                messageElem.style.display = 'block';
+            }
+        });
+        document.getElementById('codeForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const code = document.getElementById('verificationCode').value;
+
+            const response = await fetch('/User/VerificarCodigo', {
+                method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({ correo: email, codigo: code })
+                    });
+
+            const result = await response.json();
+            if (result.success) {
+                window.location.href = '/User/CambiarPassword';
+            } else {
+                document.getElementById('verificationMessage').textContent = result.message;
+                document.getElementById('verificationMessage').style.display = 'block';
+            }
+        });
+    </script>
+}

@@ -67,49 +67,69 @@ namespace ColonIA.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> EnviarCodigo(string correo)
+        public async Task<IActionResult> EnviarCodigo([FromForm] string correo)
         {
-            using var context = new DbColonIaContext();
-            var usuario = context.Usuarios.FirstOrDefault(u => u.Correo == correo);
-
-            if (usuario == null)
-                return Json(new { success = false, message = "Correo no registrado." });
-
-            // Generar codigo
-            string code = new Random().Next(100000, 999999).ToString();
-            //usuario.ResetCode = code;
-            //usuario.ResetCodeExpiration = DateTime.Now.AddMinutes(10);
-            await context.SaveChangesAsync();
-
-            // Enviar email
-            using var smtp = new SmtpClient("smtp.gmail.com")
+            try
             {
-                Credentials = new NetworkCredential("smontenegroperez@gmail.com", "wkmm nshk tfeo rpda"),
-                EnableSsl = true
-            };
-            await smtp.SendMailAsync(new MailMessage("smontenegroperez", correo)
-            {
-                Subject = "Código de Recuperación",
-                Body = $"Tu código de recuperación es: {code}"
-            });
+                if (string.IsNullOrWhiteSpace(correo))
+                    return Json(new { success = false, message = "Correo no proporcionado." });
 
-            return Json(new { success = true });
+                using var context = new DbColonIaContext();
+                var correoLimpio = correo.Trim().ToLower();
+                var usuario = context.Usuarios
+                    .FirstOrDefault(u => u.Correo.Trim().ToLower() == correoLimpio);
+                if (usuario == null)
+                    return Json(new { success = false, message = "Correo no registrado." });
+
+                // Generar codigo
+                string code = new Random().Next(100000, 999999).ToString();
+                usuario.ResetCode = code;
+                usuario.ResetCodeExpiration = DateTime.Now.AddMinutes(10);
+                await context.SaveChangesAsync();
+
+                // Enviar correo
+                using var smtp = new SmtpClient("smtp.gmail.com")
+
+                {
+                    Host = "smtp.gmail.com",
+                    Port = 587,
+                    EnableSsl = true,
+                    DeliveryMethod = SmtpDeliveryMethod.Network,
+                    UseDefaultCredentials = false,
+                    Credentials = new NetworkCredential("smontenegroperez@gmail.com", "clave"),//clave debe ser reemplazada por la clave
+                    Timeout = 20000
+                };
+                await smtp.SendMailAsync(new MailMessage("smontenegroperez@gmail.com", correo)
+                {
+                    Subject = "Código de Recuperación",
+                    Body = $"Tu código de recuperación es: {code}"
+                });
+
+                return Json(new { success = true });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = "Error interno: " + ex.Message });
+            }
         }
 
-        //[HttpPost]
-        //public IActionResult VerificarCodigo(string correo, string codigo)
-        //{
-        //    using var context = new DbColonIaContext();
-        //    //var usuario = context.Usuarios.FirstOrDefault(u => u.Correo == correo && u.ResetCode == codigo);
+        [HttpPost]
+        public IActionResult VerificarCodigo(string correo, string codigo)
+        {
+            using var context = new DbColonIaContext();
+            var correoLimpio = correo.Trim().ToLower();
+            var usuario = context.Usuarios
+                .FirstOrDefault(u => u.Correo.Trim().ToLower() == correoLimpio && u.ResetCode == codigo);
 
-        //    if (usuario == null || usuario.ResetCodeExpiration < DateTime.Now)
-        //        return Json(new { success = false, message = "Código inválido o expirado." });
+            if (usuario == null)
+                return Json(new { success = false, message = "Código inválido o expirado." });
 
-        //    // Guardar correo como verificado
-        //    TempData["CorreoRecuperacion"] = correo;
+            if (!usuario.ResetCodeExpiration.HasValue || usuario.ResetCodeExpiration < DateTime.Now)
+                return Json(new { success = false, message = "Código inválido o expirado." });
 
-        //    return Json(new { success = true });
-        //}
+            TempData["CorreoRecuperacion"] = correo;
+            return Json(new { success = true, redirectUrl = Url.Action("CambiarPassword", "User", new { correo }) });
+        }
 
         [HttpPost]
         public async Task<IActionResult> CambiarPassword(string nuevaContrasena)
@@ -119,12 +139,14 @@ namespace ColonIA.Controllers
                 return RedirectToAction("Login");
 
             using var context = new DbColonIaContext();
-            var usuario = context.Usuarios.FirstOrDefault(u => u.Correo == correo);
+            var correoLimpio = correo.Trim().ToLower();
+            var usuario = context.Usuarios
+                .FirstOrDefault(u => u.Correo.Trim().ToLower() == correoLimpio);
             if (usuario == null) return RedirectToAction("Login");
 
             usuario.Contrasena = nuevaContrasena;
-            //usuario.ResetCode = null;
-            //usuario.ResetCodeExpiration = null;
+            usuario.ResetCode = null;
+            usuario.ResetCodeExpiration = null;
             await context.SaveChangesAsync();
 
             return RedirectToAction("Login");
