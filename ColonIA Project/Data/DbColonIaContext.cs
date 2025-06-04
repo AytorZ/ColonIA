@@ -83,6 +83,8 @@ public partial class DbColonIaContext : DbContext
             entity.Property(e => e.Direccion).HasColumnType("text");
             entity.Property(e => e.IdRole).HasColumnName("Id_role");
             entity.Property(e => e.NombreCompleto).HasMaxLength(250);
+            entity.Property(e => e.ResetCode).HasMaxLength(10);
+            entity.Property(e => e.ResetCodeExpiration).HasColumnType("datetime");
             entity.Property(e => e.Telefono).HasMaxLength(20);
 
             entity.HasOne(d => d.IdRoleNavigation).WithMany(p => p.Usuarios)

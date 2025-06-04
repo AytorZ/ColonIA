@@ -19,5 +19,9 @@ public partial class Usuario
 
     public int IdRole { get; set; }
 
+    public string? ResetCode { get; set; }
+
+    public DateTime? ResetCodeExpiration { get; set; }
+
     public virtual RolUsuario IdRoleNavigation { get; set; } = null!;
 }

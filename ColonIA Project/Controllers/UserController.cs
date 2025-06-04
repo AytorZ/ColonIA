@@ -35,14 +35,14 @@ namespace ColonIA.Controllers
         {
             var context = new DbColonIaContext();
 
-            if(context.Usuarios.Any(u => (u.Correo == data.Correo) && (u.Contrasena == data.Contrasena)))
+            if (context.Usuarios.Any(u => (u.Correo == data.Correo) && (u.Contrasena == data.Contrasena)))
             {
                 return RedirectToAction("Index", "Home");
             }
             else
             {
                 return View();
-            }       
+            }
         }
 
         [HttpGet]
