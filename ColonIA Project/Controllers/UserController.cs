@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ColonIA.Models;
+using ColonIA.Data;
 
-namespace ColonAI.Controllers
+namespace ColonIA.Controllers
 {
     public class UserController : Controller
     {
@@ -11,8 +13,7 @@ namespace ColonAI.Controllers
         }
 
         [HttpGet]
-        public ActionResult UsuariosAdmin
-            ()
+        public ActionResult UsuariosAdmin()
         {
             return View();
         }
@@ -27,6 +28,21 @@ namespace ColonAI.Controllers
         public ActionResult Login()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Login(Usuario data)
+        {
+            var context = new DbColonIaContext();
+
+            if(context.Usuarios.Any(u => (u.Correo == data.Correo) && (u.Contrasena == data.Contrasena)))
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                return View();
+            }       
         }
 
         [HttpGet]

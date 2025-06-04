@@ -1,4 +1,4 @@
-namespace ColonAI.Models
+namespace ColonIA.Models
 {
     public class ErrorViewModel
     {

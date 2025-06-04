@@ -1,4 +1,5 @@
-﻿@{
+﻿@model Usuario;
+@{
     ViewBag.Title = "Login";
 }
 
@@ -15,26 +16,27 @@
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col-12 col-md-8 col-lg-6 col-xl-5">
                     <div class="card bg-dark text-white" style="border-radius: 1rem;">
-                        <div class="card-body p-5 text-center">
 
-                            <div class="mb-md-5 mt-md-4 pb-3">
-                                <h2 class="fw-bold mb-2 text-uppercase" style="font-family: 'Roboto', sans-serif; font-size: 28px; color: #4CAF50;">Iniciar sesión</h2>
-                                <p class="text-white-50 mb-5" style="font-family: 'Roboto', sans-serif; font-size: 20px;">¡Por favor ingresa tu correo electrónico y contraseña!</p>
+                        <form id="Login" asp-controller="User" asp-action="Login" method="post">
+                            <div class="card-body p-5 text-center">
+                                <div class="mb-md-5 mt-md-4 pb-3">
+                                    <h2 class="fw-bold mb-2 text-uppercase" style="font-family: 'Roboto', sans-serif; font-size: 28px; color: #4CAF50;">Iniciar sesión</h2>
+                                    <p class="text-white-50 mb-5" style="font-family: 'Roboto', sans-serif; font-size: 20px;">¡Por favor ingresa tu correo electrónico y contraseña!</p>
 
-                                <div class="mb-4">
-                                    <input type="email" id="typeEmailX" class="form-control form-control-lg" placeholder="Correo electrónico" />
+                                    <div class="mb-4">
+                                        <input type="email" id="typeEmailX" class="form-control form-control-lg" placeholder="Correo" asp-for="Correo"/>
+                                    </div>
+
+                                    <div class="mb-4">
+                                        <input type="password" id="typePasswordX" class="form-control form-control-lg" placeholder="Contraseña" asp-for="Contrasena"/>
+                                    </div>
+
+                                    <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal">¿Olvidaste tu contraseña?</a></p>
+
+                                    <button class="btn btn-outline-light btn-lg px-5" type="submit">Iniciar sesión</button>
                                 </div>
-
-                                <div class="mb-4">
-                                    <input type="password" id="typePasswordX" class="form-control form-control-lg" placeholder="Contraseña" />
-                                </div>
-
-                                <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal">¿Olvidaste tu contraseña?</a></p>
-
-                                <button class="btn btn-outline-light btn-lg px-5" type="submit">Iniciar sesión</button>
                             </div>
-
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
