@@ -39,12 +39,19 @@ namespace ColonIA.Controllers
 
             if (context.Usuarios.Any(u => (u.Correo == data.Correo) && (u.Contrasena == data.Contrasena)))
             {
-                return RedirectToAction("Index", "Home");
+                var usuario = context.Usuarios.FirstOrDefault(u => u.Correo == data.Correo && u.Contrasena == data.Contrasena);
+
+                if (usuario != null)
+                {
+                    HttpContext.Session.SetInt32("UserId", usuario.IdUsuario);
+                    HttpContext.Session.SetInt32("UserRole", usuario.IdRole);
+                    HttpContext.Session.SetString("UserEmail", usuario.Correo);
+
+                    return RedirectToAction("Index", "Home");
+                }
             }
-            else
-            {
-                return View();
-            }
+
+            return View();
         }
 
         [HttpGet]
