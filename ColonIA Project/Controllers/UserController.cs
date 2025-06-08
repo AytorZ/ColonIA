@@ -8,6 +8,8 @@ namespace ColonIA.Controllers
 {
     public class UserController : Controller
     {
+        private ColonIaContext context = new();
+
         [HttpGet]
         public ActionResult UsuariosOperador()
         {
@@ -35,8 +37,6 @@ namespace ColonIA.Controllers
         [HttpPost]
         public ActionResult Login(Usuario data)
         {
-            var context = new DbColonIaContext();
-
             if (context.Usuarios.Any(u => (u.Correo == data.Correo) && (u.Contrasena == data.Contrasena)))
             {
                 var usuario = context.Usuarios.FirstOrDefault(u => u.Correo == data.Correo && u.Contrasena == data.Contrasena);
@@ -58,6 +58,23 @@ namespace ColonIA.Controllers
         public ActionResult Register()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Register(Usuario data)
+        {
+            if (data.Contrasena.Equals(data.ConfirmacionContrasenna))
+            {
+                context.Usuarios.Add(data);
+                context.SaveChanges();
+                return RedirectToAction("UsuariosAdmin", "User");
+            }
+            else
+            {
+                ViewBag.ErrorMessage = "Las contraseñas no coinciden"; 
+                return View();
+            }
+                
         }
         [HttpGet]
         public ActionResult CambiarPassword()
@@ -81,7 +98,7 @@ namespace ColonIA.Controllers
                 if (string.IsNullOrWhiteSpace(correo))
                     return Json(new { success = false, message = "Correo no proporcionado." });
 
-                using var context = new DbColonIaContext();
+                using var context = new ColonIaContext();
                 var correoLimpio = correo.Trim().ToLower();
                 var usuario = context.Usuarios
                     .FirstOrDefault(u => u.Correo.Trim().ToLower() == correoLimpio);
@@ -123,7 +140,7 @@ namespace ColonIA.Controllers
         [HttpPost]
         public IActionResult VerificarCodigo(string correo, string codigo)
         {
-            using var context = new DbColonIaContext();
+            using var context = new ColonIaContext();
             var correoLimpio = correo.Trim().ToLower();
             var usuario = context.Usuarios
                 .FirstOrDefault(u => u.Correo.Trim().ToLower() == correoLimpio && u.ResetCode == codigo);
@@ -145,7 +162,7 @@ namespace ColonIA.Controllers
             if (string.IsNullOrEmpty(correo))
                 return RedirectToAction("Login");
 
-            using var context = new DbColonIaContext();
+            using var context = new ColonIaContext();
             var correoLimpio = correo.Trim().ToLower();
             var usuario = context.Usuarios
                 .FirstOrDefault(u => u.Correo.Trim().ToLower() == correoLimpio);

@@ -5,13 +5,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ColonIA.Data;
 
-public partial class DbColonIaContext : DbContext
+public partial class ColonIaContext : DbContext
 {
-    public DbColonIaContext()
+    public ColonIaContext()
     {
     }
 
-    public DbColonIaContext(DbContextOptions<DbColonIaContext> options)
+    public ColonIaContext(DbContextOptions<ColonIaContext> options)
         : base(options)
     {
     }
@@ -26,13 +26,13 @@ public partial class DbColonIaContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=tcp:colonaisqldb.database.windows.net,1433;Initial Catalog=DbColonIA;Persist Security Info=False;User ID=AdminSQLcolonAI;Password=MiClaveSegura2025q2ColonAI!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+        => optionsBuilder.UseSqlServer("Server=tcp:colondb2.database.windows.net,1433;Initial Catalog=colonIA;Persist Security Info=False;User ID=AdminSQLcolonAI;Password=MiClaveSegura2025q2ColonAI!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<CategoriaInventario>(entity =>
         {
-            entity.HasKey(e => e.IdCategoria).HasName("PK__Categori__4A033A930F04CA0E");
+            entity.HasKey(e => e.IdCategoria).HasName("PK__Categori__4A033A935B2220FD");
 
             entity.ToTable("CategoriaInventario");
 
@@ -42,7 +42,7 @@ public partial class DbColonIaContext : DbContext
 
         modelBuilder.Entity<Inventario>(entity =>
         {
-            entity.HasKey(e => e.IdActivo).HasName("PK__Inventar__9121353B2A79AEE1");
+            entity.HasKey(e => e.IdActivo).HasName("PK__Inventar__9121353B3B498248");
 
             entity.ToTable("Inventario");
 
@@ -56,12 +56,12 @@ public partial class DbColonIaContext : DbContext
             entity.HasOne(d => d.IdCategoriaNavigation).WithMany(p => p.Inventarios)
                 .HasForeignKey(d => d.IdCategoria)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Inventari__Id_ca__17F790F9");
+                .HasConstraintName("FK__Inventari__Id_ca__656C112C");
         });
 
         modelBuilder.Entity<RolUsuario>(entity =>
         {
-            entity.HasKey(e => e.IdRole).HasName("PK__RolUsuar__46CA8DBE1F681C9A");
+            entity.HasKey(e => e.IdRole).HasName("PK__RolUsuar__46CA8DBEBF92698E");
 
             entity.ToTable("RolUsuario");
 
@@ -71,11 +71,11 @@ public partial class DbColonIaContext : DbContext
 
         modelBuilder.Entity<Usuario>(entity =>
         {
-            entity.HasKey(e => e.IdUsuario).HasName("PK__Usuario__EF59F76208642B73");
+            entity.HasKey(e => e.IdUsuario).HasName("PK__Usuario__EF59F7624E62E850");
 
             entity.ToTable("Usuario");
 
-            entity.HasIndex(e => e.Correo, "UQ__Usuario__60695A19B6572ABA").IsUnique();
+            entity.HasIndex(e => e.Correo, "UQ__Usuario__60695A19DF12FCBD").IsUnique();
 
             entity.Property(e => e.IdUsuario).HasColumnName("Id_usuario");
             entity.Property(e => e.Contrasena).HasMaxLength(500);
@@ -90,7 +90,7 @@ public partial class DbColonIaContext : DbContext
             entity.HasOne(d => d.IdRoleNavigation).WithMany(p => p.Usuarios)
                 .HasForeignKey(d => d.IdRole)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Usuario__Id_role__123EB7A3");
+                .HasConstraintName("FK__Usuario__Id_role__619B8048");
         });
 
         OnModelCreatingPartial(modelBuilder);
