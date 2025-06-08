@@ -17,6 +17,13 @@ namespace ColonIA.Controllers
         }
 
         [HttpGet]
+        public ActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Index", "Home");
+        }
+
+        [HttpGet]
         public ActionResult UsuariosAdmin()
         {
             return View();
