@@ -23,49 +23,69 @@
                         <a asp-controller="Home" asp-action="Index"><h2>Menu</h2></a>
                     </header>
                     <ul>
-                        <li>
-                            <span class="opener">Usuario</span>
-                            <ul>
-                                <li><a asp-controller="User" asp-action="PerfilUsuario">Perfil</a></li>
-                                <li><a asp-controller="User" asp-action="UsuariosAdmin">Administrador</a></li>
-                                <li><a href="#">Operador</a></li>
-                                <li><a asp-controller="User" asp-action="UsuariosSupervisor">Supervisor</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <span class="opener">Produccion</span>
-                            <ul>
-                                <li><a asp-controller="Produccion" asp-action="Incubacion">Incubacion</a></li>
-                                <li><a asp-controller="Produccion" asp-action="Crianza">Crianza</a></li>
-                                <li><a asp-controller="Produccion" asp-action="Cosecha">Cosecha</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <span class="opener">Analisis</span>
-                            <ul>
-                                <li><a asp-controller="Analisis" asp-action="AnalisisAI">Vista General</a></li>
-                                <li><a asp-controller="Analisis" asp-action="AnalisisChat">Chat</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <span class="opener">Calidad</span>
-                            <ul>
-                                <li><a asp-controller="Calidad" asp-action="Index">Calidad</a></li>
-                                <li><a asp-controller="Contador" asp-action="Index">Finanzas</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <span class="opener">Inventario</span>
-                            <ul>
-                                <li><a asp-controller="Inventario" asp-action="Recursos">Recursos</a></li>
-                                <li><a asp-controller="Inventario" asp-action="HistorialRecursos">Historial Recursos</a></li>
-                                <li><a asp-controller="Inventario" asp-action="HistorialInventario">Historial Inventario</a></li>
-                                <li><a asp-controller="Inventario" asp-action="Categorias">Categorias</a></li>
-                                <li><a asp-controller="Inventario" asp-action="AsignarRecurso">Asignar Recurso</a></li>
-                            </ul>
-                        </li>
-                        <li><a asp-controller="User" asp-action="Login">Iniciar Sesión</a></li>
-                        <li style="color: #fc4040;"><a href="#">Cerrar Sesión</a></li>
+                        @{
+                            if (Context.Session.GetInt32("UserId") != null)
+                            {
+
+
+
+                                <li>
+                                    <span class="opener">Usuario</span>
+                                    <ul>
+                                        <li><a asp-controller="User" asp-action="PerfilUsuario">Perfil</a></li>
+                                        @switch (Context.Session.GetInt32("UserRole"))
+                                        {
+                                            case 1:
+                                                <li><a asp-controller="User" asp-action="UsuariosAdmin">Administrador</a></li>
+                                                break;
+                                            case 2:
+                                                <li><a asp-controller="User" asp-action="UsuariosSupervisor">Supervisor</a></li>
+                                                break;
+                                            case 3:
+                                                <li><a href="#">Operador</a></li>
+                                                break;
+                                        }          
+                                    </ul>
+                                </li>
+                                <li>
+                                    <span class="opener">Produccion</span>
+                                    <ul>
+                                        <li><a asp-controller="Produccion" asp-action="Incubacion">Incubacion</a></li>
+                                        <li><a asp-controller="Produccion" asp-action="Crianza">Crianza</a></li>
+                                        <li><a asp-controller="Produccion" asp-action="Cosecha">Cosecha</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <span class="opener">Analisis</span>
+                                    <ul>
+                                        <li><a asp-controller="Analisis" asp-action="AnalisisAI">Vista General</a></li>
+                                        <li><a asp-controller="Analisis" asp-action="AnalisisChat">Chat</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <span class="opener">Calidad</span>
+                                    <ul>
+                                        <li><a asp-controller="Calidad" asp-action="Index">Calidad</a></li>
+                                        <li><a asp-controller="Contador" asp-action="Index">Finanzas</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <span class="opener">Inventario</span>
+                                    <ul>
+                                        <li><a asp-controller="Inventario" asp-action="Recursos">Recursos</a></li>
+                                        <li><a asp-controller="Inventario" asp-action="HistorialRecursos">Historial Recursos</a></li>
+                                        <li><a asp-controller="Inventario" asp-action="HistorialInventario">Historial Inventario</a></li>
+                                        <li><a asp-controller="Inventario" asp-action="Categorias">Categorias</a></li>
+                                        <li><a asp-controller="Inventario" asp-action="AsignarRecurso">Asignar Recurso</a></li>
+                                    </ul>
+                                </li>
+                                <li style="color: #fc4040;"><a href="#">Cerrar Sesión</a></li>
+                            }
+                            else
+                            {
+                                <li><a asp-controller="User" asp-action="Login">Iniciar Sesión</a></li>
+                            }
+                        }
                     </ul>
                 </nav>
             </div>
@@ -78,7 +98,7 @@
     <script src="~/js/jquery.min.js"></script>
     <script src="~/js/main.js"></script>
     <script src="~/js/util.js"></script>
-    
+
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>

@@ -8,6 +8,8 @@ namespace ColonIA.Controllers
 {
     public class UserController : Controller
     {
+        private ColonIaContext context = new();
+
         [HttpGet]
         public ActionResult UsuariosOperador()
         {
@@ -35,22 +37,44 @@ namespace ColonIA.Controllers
         [HttpPost]
         public ActionResult Login(Usuario data)
         {
-            var context = new ColonIaContext();
-
             if (context.Usuarios.Any(u => (u.Correo == data.Correo) && (u.Contrasena == data.Contrasena)))
             {
-                return RedirectToAction("Index", "Home");
+                var usuario = context.Usuarios.FirstOrDefault(u => u.Correo == data.Correo && u.Contrasena == data.Contrasena);
+
+                if (usuario != null)
+                {
+                    HttpContext.Session.SetInt32("UserId", usuario.IdUsuario);
+                    HttpContext.Session.SetInt32("UserRole", usuario.IdRole);
+                    HttpContext.Session.SetString("UserEmail", usuario.Correo);
+
+                    return RedirectToAction("Index", "Home");
+                }
             }
-            else
-            {
-                return View();
-            }
+
+            return View();
         }
 
         [HttpGet]
         public ActionResult Register()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Register(Usuario data)
+        {
+            if (data.Contrasena.Equals(data.ConfirmacionContrasenna))
+            {
+                context.Usuarios.Add(data);
+                context.SaveChanges();
+                return RedirectToAction("UsuariosAdmin", "User");
+            }
+            else
+            {
+                ViewBag.ErrorMessage = "Las contraseñas no coinciden"; 
+                return View();
+            }
+                
         }
         [HttpGet]
         public ActionResult CambiarPassword()
