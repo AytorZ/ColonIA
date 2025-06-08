@@ -39,12 +39,19 @@ namespace ColonIA.Controllers
 
             if (context.Usuarios.Any(u => (u.Correo == data.Correo) && (u.Contrasena == data.Contrasena)))
             {
-                return RedirectToAction("Index", "Home");
+                var usuario = context.Usuarios.FirstOrDefault(u => u.Correo == data.Correo && u.Contrasena == data.Contrasena);
+
+                if (usuario != null)
+                {
+                    HttpContext.Session.SetInt32("UserId", usuario.IdUsuario);
+                    HttpContext.Session.SetInt32("UserRole", usuario.IdRole);
+                    HttpContext.Session.SetString("UserEmail", usuario.Correo);
+
+                    return RedirectToAction("Index", "Home");
+                }
             }
-            else
-            {
-                return View();
-            }
+
+            return View();
         }
 
         [HttpGet]
@@ -81,29 +88,39 @@ namespace ColonIA.Controllers
                 if (usuario == null)
                     return Json(new { success = false, message = "Correo no registrado." });
 
-                // Generar codigo
+                // Generar código
                 string code = new Random().Next(100000, 999999).ToString();
                 usuario.ResetCode = code;
                 usuario.ResetCodeExpiration = DateTime.Now.AddMinutes(10);
                 await context.SaveChangesAsync();
 
-                // Enviar correo
-                using var smtp = new SmtpClient("smtp.gmail.com")
+                var templatePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "templates", "PasswordResetTemplate.html");
+                if (!System.IO.File.Exists(templatePath))
+                    return Json(new { success = false, message = "No se encontró la plantilla de correo." });
 
+                string body = await System.IO.File.ReadAllTextAsync(templatePath);
+                body = body.Replace("{{code}}", code);
+
+                // Enviar el correo
+                using var smtp = new SmtpClient("smtp.gmail.com")
                 {
                     Host = "smtp.gmail.com",
                     Port = 587,
                     EnableSsl = true,
                     DeliveryMethod = SmtpDeliveryMethod.Network,
                     UseDefaultCredentials = false,
-                    Credentials = new NetworkCredential("smontenegroperez@gmail.com", "clave"),//clave debe ser reemplazada por la clave
+                    Credentials = new NetworkCredential("proyectocolonia.info@gmail.com", "tzdu ohls mspp taad"),
                     Timeout = 20000
                 };
-                await smtp.SendMailAsync(new MailMessage("smontenegroperez@gmail.com", correo)
+
+                var mail = new MailMessage("proyectocolonia.info@gmail.com", correo)
                 {
-                    Subject = "Código de Recuperación",
-                    Body = $"Tu código de recuperación es: {code}"
-                });
+                    Subject = "Restablecimiento de Contraseña - Código de Recuperación",
+                    IsBodyHtml = true,
+                    Body = body
+                };
+
+                await smtp.SendMailAsync(mail);
 
                 return Json(new { success = true });
             }
@@ -112,6 +129,7 @@ namespace ColonIA.Controllers
                 return Json(new { success = false, message = "Error interno: " + ex.Message });
             }
         }
+
 
         [HttpPost]
         public IActionResult VerificarCodigo(string correo, string codigo)
