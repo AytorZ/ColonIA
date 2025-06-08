@@ -35,7 +35,7 @@ namespace ColonIA.Controllers
         [HttpPost]
         public ActionResult Login(Usuario data)
         {
-            var context = new DbColonIaContext();
+            var context = new ColonIaContext();
 
             if (context.Usuarios.Any(u => (u.Correo == data.Correo) && (u.Contrasena == data.Contrasena)))
             {
@@ -74,7 +74,7 @@ namespace ColonIA.Controllers
                 if (string.IsNullOrWhiteSpace(correo))
                     return Json(new { success = false, message = "Correo no proporcionado." });
 
-                using var context = new DbColonIaContext();
+                using var context = new ColonIaContext();
                 var correoLimpio = correo.Trim().ToLower();
                 var usuario = context.Usuarios
                     .FirstOrDefault(u => u.Correo.Trim().ToLower() == correoLimpio);
@@ -116,7 +116,7 @@ namespace ColonIA.Controllers
         [HttpPost]
         public IActionResult VerificarCodigo(string correo, string codigo)
         {
-            using var context = new DbColonIaContext();
+            using var context = new ColonIaContext();
             var correoLimpio = correo.Trim().ToLower();
             var usuario = context.Usuarios
                 .FirstOrDefault(u => u.Correo.Trim().ToLower() == correoLimpio && u.ResetCode == codigo);
@@ -138,7 +138,7 @@ namespace ColonIA.Controllers
             if (string.IsNullOrEmpty(correo))
                 return RedirectToAction("Login");
 
-            using var context = new DbColonIaContext();
+            using var context = new ColonIaContext();
             var correoLimpio = correo.Trim().ToLower();
             var usuario = context.Usuarios
                 .FirstOrDefault(u => u.Correo.Trim().ToLower() == correoLimpio);
