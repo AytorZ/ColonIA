@@ -3,6 +3,7 @@ using ColonIA.Models;
 using ColonIA.Data;
 using System.Net.Mail;
 using System.Net;
+using Microsoft.EntityFrameworkCore;
 
 namespace ColonIA.Controllers
 {
@@ -92,7 +93,15 @@ namespace ColonIA.Controllers
         [HttpGet]
         public ActionResult PerfilUsuario()
         {
-            return View();
+            int? userID = HttpContext.Session.GetInt32("UserId");
+
+            if (userID == null)
+            {
+                return RedirectToAction("Index", "Home");
+
+            }
+            var result = context.Usuarios.FirstOrDefault(u => u.IdUsuario == userID);
+            return View(result);
         }
 
 
