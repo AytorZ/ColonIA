@@ -79,11 +79,11 @@ namespace ColonIA.Controllers
             }
             else
             {
-                ViewBag.ErrorMessage = "Las contraseñas no coinciden"; 
+                ViewBag.ErrorMessage = "Las contraseñas no coinciden";
                 return View();
             }
-                
         }
+
         [HttpGet]
         public ActionResult CambiarPassword()
         {
@@ -96,15 +96,33 @@ namespace ColonIA.Controllers
             int? userID = HttpContext.Session.GetInt32("UserId");
 
             if (userID == null)
-            {
                 return RedirectToAction("Index", "Home");
 
-            }
             var result = context.Usuarios.FirstOrDefault(u => u.IdUsuario == userID);
             return View(result);
         }
 
+        // NUEVO: Actualizar perfil del usuario
+        [HttpPost]
+        public IActionResult ActualizarPerfil(Usuario data)
+        {
+            var usuarioBD = context.Usuarios.FirstOrDefault(u => u.IdUsuario == data.IdUsuario);
+            if (usuarioBD == null)
+                return NotFound();
 
+            usuarioBD.NombreCompleto = data.NombreCompleto;
+            usuarioBD.Correo = data.Correo;
+            usuarioBD.Telefono = data.Telefono;
+            usuarioBD.Direccion = data.Direccion;
+
+            // Solo se actualiza la contraseña si se proporciona una nueva
+            if (!string.IsNullOrWhiteSpace(data.Contrasena))
+                usuarioBD.Contrasena = data.Contrasena;
+
+            context.SaveChanges();
+
+            return RedirectToAction("PerfilUsuario");
+        }
 
         [HttpPost]
         public async Task<IActionResult> EnviarCodigo([FromForm] string correo)
@@ -163,7 +181,6 @@ namespace ColonIA.Controllers
             }
         }
 
-
         [HttpPost]
         public IActionResult VerificarCodigo(string correo, string codigo)
         {
@@ -202,8 +219,5 @@ namespace ColonIA.Controllers
 
             return RedirectToAction("Login");
         }
-
-
-
     }
 }
