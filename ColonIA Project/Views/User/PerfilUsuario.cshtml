@@ -60,8 +60,11 @@
             <hr>
             <div class="row">
                 <div class="col-sm-3"><h6 class="mb-0">Contraseña</h6></div>
-                <div class="col-sm-9 text-secondary">**********************</div>
+                <div class="col-sm-9 text-secondary">
+                    @(new string('*', Model.Contrasena?.Length ?? 10))
+                </div>
             </div>
+
             <hr>
             <div class="row">
                 <div class="col-sm-3"><h6 class="mb-0">Dirección</h6></div>
