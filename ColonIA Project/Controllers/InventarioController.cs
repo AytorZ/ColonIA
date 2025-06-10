@@ -56,13 +56,41 @@ namespace ColonIA.Controllers
         [HttpGet]
         public ActionResult CreacionRecurso()
         {
-            var model = new CreacionRecursoViewModel
+            var model = new CreacionRecursoViewModel();
+            try
             {
-                ListaCategorias = context.CategoriaInventarios.ToList(),
-                NuevoInventario = new Inventario()
-            };
+
+                model.ListaCategorias = context.CategoriaInventarios.ToList();
+                model.NuevoInventario = new Inventario();
+
+            }
+            catch (Exception e)
+            {
+
+                ViewBag.ErrorMessage = e.Message;
+            }
 
             return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult CreacionRecurso(CreacionRecursoViewModel data)
+        {
+            try
+            {
+                data.ListaCategorias = context.CategoriaInventarios.ToList();
+
+                if (ModelState.IsValid)
+                {
+                    context.Inventarios.Add(data.NuevoInventario);
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception e)
+            {
+                ViewBag.Error = e.Message;
+            }
+            return View(data);
         }
 
 
