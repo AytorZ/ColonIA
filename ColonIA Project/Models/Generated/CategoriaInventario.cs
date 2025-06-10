@@ -9,5 +9,7 @@ public partial class CategoriaInventario
 
     public string NombreCategoria { get; set; } = null!;
 
+    public string? Descripcion { get; set; }
+
     public virtual ICollection<Inventario> Inventarios { get; set; } = new List<Inventario>();
 }

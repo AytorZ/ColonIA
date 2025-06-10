@@ -1,4 +1,6 @@
-﻿@{
+﻿@model ColonIA.Models.CreacionRecursoViewModel
+
+@{
 
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -20,31 +22,32 @@
                 <h3 style="color: #e0e0e0;">Ingresa los detalles del nuevo recurso</h3>
             </div>
 
-            <form method="post">
+            <form method="post" asp-action="CreacionRecurso" asp-controller="Inventario">
 
                 <div class="form-group mb-3">
                     <label>Nombre del Recurso</label>
-                    <input type="text"  class="form-control" placeholder="Nombre del recurso" required />
+                    <input asp-for="@Model.NuevoInventario.NombreDelActivo" type="text" class="form-control" placeholder="Nombre del recurso" required />
                 </div>
 
                 <div class="form-group mb-3">
                     <label>Categoria</label>
                     <select required>
                         <option value="" disabled selected>Selecciona una categoria</option>
-                        <option value="Material">Material</option>
-                        <option value="Equipos">Equipos</option>
-                        <option value="Herramientas">Herramientas</option>
+                        @foreach(var categoria in Model.ListaCategorias){
+                            <option asp-for="@Model.NuevoInventario.IdCategoria" value="@categoria.IdCategoria">@categoria.NombreCategoria</option>
+                        }
+                        
                     </select>
                 </div>
 
                 <div class="form-group mb-3">
                     <label for="resourceQuantity">Cantidad</label>
-                    <input type="number" name="resourceQuantity" class="form-control" placeholder="Cantidad disponible" required />
+                    <input asp-for="@Model.NuevoInventario.CantidadActivo" type="number" class="form-control" placeholder="Cantidad disponible" required />
                 </div>
 
                 <div class="form-group mb-3 text-center">
                     
-                    <br />
+                    <br/>
                     <input type="submit" class="button primary fit"/>
                 </div>
 
@@ -53,4 +56,3 @@
         </div>
     </section>
 </div>
-

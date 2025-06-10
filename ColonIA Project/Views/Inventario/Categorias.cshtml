@@ -1,4 +1,5 @@
-﻿@{
+﻿@model ColonIA.Models.CategoriaInventario
+@{
 
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -107,14 +108,14 @@
                     <h2 style="color: #29a84f;">Crear Nueva Categoría</h2>
                 </div>
 
-                <form method="post">
+                <form method="post" asp-action="Categorias" asp-controller="Inventario">
                     <div class="form-group mb-3">
                         <label>Nombre</label>
-                        <input type="text" class="form-control" id="categoryName">
+                        <input type="text" class="form-control" asp-for="NombreCategoria">
                     </div>
                     <div class="form-group mb-3">
                         <label>Descripción</label>
-                        <textarea class="form-control"></textarea>
+                        <textarea asp-for="Descripcion"> </textarea>
                     </div>
 
                     <div class="text-center">
@@ -122,8 +123,6 @@
                         <input type="submit" class="button primary" value="Crear" />
                     </div>
                 </form>
-
-                
 
             </div>
         </div>
