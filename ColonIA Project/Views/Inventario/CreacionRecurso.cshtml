@@ -1,66 +1,58 @@
-﻿@{
+﻿@model ColonIA.Models.CreacionRecursoViewModel
+
+@{
 
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="inner">
-    
+    <header id="header">
+        <a href="@Url.Action("Index", "Home")" class="logo"><strong>ColonIA</strong> by iCricket</a>
+        <ul class="icons">
+            <li>
+                <a href="@Url.Action("UsuariosAdmin", "User")" class="icon solid fa-arrow-left"></a>
+            </li>
+        </ul>
+    </header>
 
     <section>
-        <header class="main">
-            <h4>
-                <a href="/Inventario/Recursos" class="icon solid fa-arrow-left">
-                    Volver a Recursos
-                </a>
-            </h4>
-        </header>
-        <div class="box">
-            <div class="card-headerCus">
-                <h2>Registro de Recursos</h2>
+        <div class="box card">
+            <div class="text-center">
+                <h2 style="color: #29a84f;">Registro de Recursos</h2>
+                <h3 style="color: #e0e0e0;">Ingresa los detalles del nuevo recurso</h3>
             </div>
 
-            <div class="card-body">
-                <h4 class="text-center mb-4">Ingresa los detalles del nuevo recurso</h4>
+            <form method="post" asp-action="CreacionRecurso" asp-controller="Inventario">
 
-                <form id="resourceForm" method="post">
-                    <div class="form-group mb-3">
-                        <label for="resourceName">Nombre del Recurso</label>
-                        <input type="text" id="resourceName" name="resourceName" class="form-control" placeholder="Nombre del recurso" required />
-                    </div>
+                <div class="form-group mb-3">
+                    <label>Nombre del Recurso</label>
+                    <input asp-for="@Model.NuevoInventario.NombreDelActivo" type="text" class="form-control" placeholder="Nombre del recurso" required />
+                </div>
 
-                    <div class="form-group mb-3">
-                        <label for="resourceType">Tipo de Recurso</label>
-                        <select id="resourceType" name="resourceType" class="form-control" required>
-                            <option value="">Selecciona un tipo</option>
-                            <option value="Material">Material</option>
-                            <option value="Equipos">Equipos</option>
-                            <option value="Herramientas">Herramientas</option>
-                        </select>
-                    </div>
+                <div class="form-group mb-3">
+                    <label>Categoria</label>
+                    <select required>
+                        <option value="" disabled selected>Selecciona una categoria</option>
+                        @foreach(var categoria in Model.ListaCategorias){
+                            <option asp-for="@Model.NuevoInventario.IdCategoria" value="@categoria.IdCategoria">@categoria.NombreCategoria</option>
+                        }
+                        
+                    </select>
+                </div>
 
-                    <div class="form-group mb-3">
-                        <label for="resourceQuantity">Cantidad</label>
-                        <input type="number" id="resourceQuantity" name="resourceQuantity" class="form-control" placeholder="Cantidad disponible" required />
-                    </div>
+                <div class="form-group mb-3">
+                    <label for="resourceQuantity">Cantidad</label>
+                    <input asp-for="@Model.NuevoInventario.CantidadActivo" type="number" class="form-control" placeholder="Cantidad disponible" required />
+                </div>
 
-                    <div class="form-group mb-3">
-                        <label for="resourcePrice">Precio por Unidad</label>
-                        <input type="number" id="resourcePrice" name="resourcePrice" class="form-control" placeholder="Precio por unidad" required />
-                    </div>
+                <div class="form-group mb-3 text-center">
+                    
+                    <br/>
+                    <input type="submit" class="button primary fit"/>
+                </div>
 
-                    <div class="form-group mb-3">
-                        <label for="resourceType">Categoria</label>
-                        <select id="categoria" name="categoria" class="form-control" required>
-                            <option value="">Selecciona una categoria</option>
-                            <option value="Seguridad">Seguridad</option>
-                            <option value="Herrramientas">Herramientas</option>
-                            <option value="Materiales">Materiales</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="buttom primary">Registrar Recurso</button>
-                </form>
-            </div>
+            </form>
+
         </div>
     </section>
 </div>
-

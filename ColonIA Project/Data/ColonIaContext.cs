@@ -37,6 +37,7 @@ public partial class ColonIaContext : DbContext
             entity.ToTable("CategoriaInventario");
 
             entity.Property(e => e.IdCategoria).HasColumnName("Id_categoria");
+            entity.Property(e => e.Descripcion).HasColumnType("text");
             entity.Property(e => e.NombreCategoria).HasMaxLength(100);
         });
 

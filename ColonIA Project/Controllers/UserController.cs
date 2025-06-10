@@ -9,7 +9,7 @@ namespace ColonIA.Controllers
 {
     public class UserController : Controller
     {
-        private ColonIaContext context = new();
+        private readonly ColonIaContext context = new();
 
         [HttpGet]
         public ActionResult UsuariosOperador()
@@ -54,7 +54,6 @@ namespace ColonIA.Controllers
                     HttpContext.Session.SetInt32("UserId", usuario.IdUsuario);
                     HttpContext.Session.SetInt32("UserRole", usuario.IdRole);
                     HttpContext.Session.SetString("UserEmail", usuario.Correo);
-
                     return RedirectToAction("Index", "Home");
                 }
             }
@@ -82,6 +81,7 @@ namespace ColonIA.Controllers
                 ViewBag.ErrorMessage = "Las contraseñas no coinciden";
                 return View();
             }
+
         }
 
         [HttpGet]
@@ -135,7 +135,7 @@ namespace ColonIA.Controllers
                 using var context = new ColonIaContext();
                 var correoLimpio = correo.Trim().ToLower();
                 var usuario = context.Usuarios
-                    .FirstOrDefault(u => u.Correo.Trim().ToLower() == correoLimpio);
+                    .FirstOrDefault(u => u.Correo.Trim().ToLower().Equals(correoLimpio));
                 if (usuario == null)
                     return Json(new { success = false, message = "Correo no registrado." });
 
@@ -187,7 +187,7 @@ namespace ColonIA.Controllers
             using var context = new ColonIaContext();
             var correoLimpio = correo.Trim().ToLower();
             var usuario = context.Usuarios
-                .FirstOrDefault(u => u.Correo.Trim().ToLower() == correoLimpio && u.ResetCode == codigo);
+                .FirstOrDefault(u => u.Correo.Trim().ToLower().Equals(correoLimpio) && u.ResetCode == codigo);
 
             if (usuario == null)
                 return Json(new { success = false, message = "Código inválido o expirado." });
@@ -209,7 +209,7 @@ namespace ColonIA.Controllers
             using var context = new ColonIaContext();
             var correoLimpio = correo.Trim().ToLower();
             var usuario = context.Usuarios
-                .FirstOrDefault(u => u.Correo.Trim().ToLower() == correoLimpio);
+                .FirstOrDefault(u => u.Correo.Trim().ToLower().Equals(correoLimpio));
             if (usuario == null) return RedirectToAction("Login");
 
             usuario.Contrasena = nuevaContrasena;
