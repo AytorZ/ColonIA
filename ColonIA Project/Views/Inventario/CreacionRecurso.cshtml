@@ -26,15 +26,15 @@
 
                 <div class="form-group mb-3">
                     <label>Nombre del Recurso</label>
-                    <input asp-for="@Model.NuevoInventario.NombreDelActivo" type="text" class="form-control" placeholder="Nombre del recurso" required />
+                    <input asp-for="NuevoInventario.NombreDelActivo" type="text" class="form-control" placeholder="Nombre del recurso" required />
                 </div>
 
                 <div class="form-group mb-3">
                     <label>Categoria</label>
-                    <select required>
+                    <select asp-for="NuevoInventario.IdCategoria" required>
                         <option value="" disabled selected>Selecciona una categoria</option>
                         @foreach(var categoria in Model.ListaCategorias){
-                            <option asp-for="@Model.NuevoInventario.IdCategoria" value="@categoria.IdCategoria">@categoria.NombreCategoria</option>
+                            <option value="@categoria.IdCategoria">@categoria.NombreCategoria</option>
                         }
                         
                     </select>
@@ -42,7 +42,7 @@
 
                 <div class="form-group mb-3">
                     <label for="resourceQuantity">Cantidad</label>
-                    <input asp-for="@Model.NuevoInventario.CantidadActivo" type="number" class="form-control" placeholder="Cantidad disponible" required />
+                    <input asp-for="NuevoInventario.CantidadActivo" type="number" class="form-control" placeholder="Cantidad disponible" required />
                 </div>
 
                 <div class="form-group mb-3 text-center">
