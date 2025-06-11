@@ -1,4 +1,5 @@
-﻿@{
+﻿@model Usuario;
+@{
     ViewBag.Title = "Register";
 }
 
@@ -15,56 +16,50 @@
 
     </header>
 
-    <section class="vh-100 gradient-custom">
-        <div class="container py-5 h-100">
-            <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-                    <div class="card bg-dark text-white" style="border-radius: 1rem;">
-                        <div class="card-body p-5 text-center">
+    <!--Form de registro -->
+    <section>
+        <div class="bg-dark" style="border-radius: 1rem;">
+            <div class="p-5 text-center">
+
+                <h2 style="color: #4CAF50;">Registro de Usuario</h2>
+                <h3>¡Por favor ingresa los datos del nuevo usuario!</h3>
+
+                <form method="post" asp-controller="User" asp-action="Register">
+                    <div class="row gtr-uniform">
 
 
-                            <div class="mb-md-5 mt-md-4 pb-3">
-
-                                <h2 class="fw-bold mb-2 text-uppercase" style="font-family: 'Roboto', sans-serif; font-size: 28px; color: #4CAF50;">Registro de Usuario</h2>
-                                <p class="text-white-50 mb-5" style="font-family: 'Roboto', sans-serif; font-size: 20px;">¡Por favor ingresa los datos del nuevo usuario!</p>
-
-                                <form id="registerForm" method="post">
-                                    <div class="mb-4">
-                                        <input type="text" id="fullName" name="fullName" class="form-control form-control-lg" placeholder="Nombre completo" required />
-                                    </div>
-
-                                    <div class="mb-4">
-                                        <input type="email" id="email" name="email" class="form-control form-control-lg" placeholder="Correo electrónico" required />
-                                    </div>
-
-                                    <div class="mb-4">
-                                        <select id="role" name="role" class="form-control form-control-lg" required>
-                                            <option value="">Selecciona un rol</option>
-                                            <option value="Administrador">Administrador</option>
-                                            <option value="Operador">Operador</option>
-                                            <option value="Supervisor">Supervisor</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="mb-4">
-                                        <input type="password" id="password" name="password" class="form-control form-control-lg" placeholder="Contraseña" required />
-                                    </div>
-
-                                    <div class="mb-4">
-                                        <input type="password" id="confirmPassword" name="confirmPassword" class="form-control form-control-lg" placeholder="Confirmar contraseña" required />
-                                    </div>
-
-                                    <button class="btn btn-outline-light btn-lg px-5" type="submit">Registrar</button>
-                                </form>
-
-
-                                <div id="formMessage" class="text-white mt-3" style="display: none;"></div>
-
-                            </div>
-
+                        <div class="col-12">
+                            <input type="text" placeholder="Nombre completo" required asp-for="NombreCompleto" />
                         </div>
+
+                        <div class="col-12">
+                            <input type="email" placeholder="Correo electrónico" required asp-for="Correo" />
+                        </div>
+
+                        <div class="col-12">
+                            <select required asp-for="IdRole">
+                                <option value="" disabled selected>Selecciona un rol</option>
+                                <option value="1">Administrador</option>
+                                <option value="2">Supervisor</option>
+                                <option value="3">Operador</option>
+                            </select>
+                        </div>
+
+                        <div class="col-12">
+                            <input asp-for="Contrasena" type="password" placeholder="Contraseña" required />
+                        </div>
+
+                        <div class="col-12">
+                            <input asp-for="ConfirmacionContrasenna" type="password" placeholder="Confirmar contraseña" required />
+                        </div>
+
+                        <div class="col-12">
+                            <input class="button primary fit" type="submit">
+                        </div>
+                        
                     </div>
-                </div>
+                </form>
+
             </div>
         </div>
     </section>
