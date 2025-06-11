@@ -80,11 +80,10 @@ namespace ColonIA.Controllers
             {
                 data.ListaCategorias = context.CategoriaInventarios.ToList();
 
-                if (ModelState.IsValid)
-                {
-                    context.Inventarios.Add(data.NuevoInventario);
-                    context.SaveChanges();
-                }
+
+                context.Inventarios.Add(data.NuevoInventario);
+                context.SaveChanges();
+
             }
             catch (Exception e)
             {
