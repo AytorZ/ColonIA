@@ -2017,6 +2017,10 @@ input[type="radio"] {
         background: #0B2A33;
     }
 
+    .box  h2 {
+        color: #29a84f;
+    }
+
 /* Icon */
 .icon {
     text-decoration: none;
