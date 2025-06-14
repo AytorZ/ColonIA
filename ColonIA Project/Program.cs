@@ -24,7 +24,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-app.UseExceptionHandler("Error/CapturarError");
+app.UseExceptionHandler("/Error/CapturarError");
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();

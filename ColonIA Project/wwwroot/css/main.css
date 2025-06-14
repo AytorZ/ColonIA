@@ -2014,7 +2014,7 @@ input[type="radio"] {
 
     .box.card {
         padding: 5%;
-        background: #0B2A33;
+        background: #212529;
     }
 
     .box  h2 {
@@ -2495,7 +2495,7 @@ button,
     input[type="button"]:hover,
     button:hover,
     .button:hover {
-        background-color: #70D08D;
+        background-color: rgba(112,208,141,0.1);
     }
 
     input[type="submit"]:active,
@@ -2503,7 +2503,7 @@ button,
     input[type="button"]:active,
     button:active,
     .button:active {
-        background-color: #46B969;
+        background-color: rgba(70,185,105,0.1);
     }
 
     input[type="submit"].icon:before,
