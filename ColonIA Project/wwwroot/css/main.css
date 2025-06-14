@@ -2495,7 +2495,7 @@ button,
     input[type="button"]:hover,
     button:hover,
     .button:hover {
-        background-color: rgba(245, 106, 106, 0.05);
+        background-color: #70D08D;
     }
 
     input[type="submit"]:active,
@@ -2503,7 +2503,7 @@ button,
     input[type="button"]:active,
     button:active,
     .button:active {
-        background-color: rgba(245, 106, 106, 0.15);
+        background-color: #46B969;
     }
 
     input[type="submit"].icon:before,

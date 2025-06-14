@@ -13,7 +13,6 @@
 
     <section>
         <div class="box card">
-
             <form asp-controller="User" asp-action="Login" method="post">
                 @Html.AntiForgeryToken()
                 <div class="text-center">
@@ -27,8 +26,8 @@
                     <input type="password" class="form-control-lg" placeholder="Contraseña" asp-for="Contrasena" />
                 </div>
                 <div class="text-center form-group mb-3">
-                    <p><a data-bs-toggle="modal" data-bs-target="#forgotPasswordModal">¿Olvidaste tu contraseña?</a></p>
-                    <input class="button primary large fit" type="submit"/>
+                    <p><a data-bs-toggle="modal" data-bs-target="#forgotPasswordModal" style="cursor:pointer;">¿Olvidaste tu contraseña?</a></p>
+                    <input class="button primary large fit" type="submit" />
                 </div>
             </form>
         </div>
@@ -36,13 +35,13 @@
 
 </div>
 
-<div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-labelledby="forgotPasswordModalLabel" aria-hidden="true">
+<div class="modal fade" id="forgotPasswordModal">
     <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="forgotPasswordModalLabel">Recuperar Contraseña</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="box card modal-content">
+            <div class="modal-header text-center">
+                <h2>Recuperar Contraseña</h2>
             </div>
+
             <div class="modal-body">
                 <div id="emailFormSection">
                     <p>Por favor, ingresa tu correo electrónico para recibir el código de verificación.</p>
@@ -50,18 +49,22 @@
                         <div class="mb-4">
                             <input type="email" id="email" name="correo" class="form-control" placeholder="Correo electrónico" required />
                         </div>
-                        <button class="btn btn-outline-light btn-lg px-5" type="submit">Enviar Código</button>
+                        <div class="text-center">
+                            <input class="button primary large" type="submit" value="Enviar Código" />
+                        </div>
                     </form>
                     <div id="formMessage" class="text-white mt-3" style="display: none;"></div>
                 </div>
 
                 <div id="verificationFormSection" style="display: none;">
-                    <h4 class="text-black">Ingresa el código de verificación enviado a tu correo</h4>
+                    <p>Ingresa el código de verificación enviado a tu correo</p>
                     <form id="codeForm">
                         <div class="mb-4">
                             <input type="text" id="verificationCode" class="form-control" placeholder="Código de verificación" required />
                         </div>
-                        <button class="btn btn-outline-light btn-lg px-5" type="submit" id="verifyCodeBtn">Verificar Código</button>
+                        <div class="text-center">
+                            <input class="button primary large" type="submit" value="Verificar Código"/>
+                        </div>
                     </form>
                     <div id="verificationMessage" class="text-black mt-3" style="display: none;"></div>
                 </div>
