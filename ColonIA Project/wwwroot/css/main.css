@@ -2460,7 +2460,6 @@ table {
 input[type="submit"],
 input[type="reset"],
 input[type="button"],
-button,
 .button {
     -moz-appearance: none;
     -webkit-appearance: none;
@@ -2489,6 +2488,19 @@ button,
     text-transform: uppercase;
     white-space: nowrap;
 }
+
+.accion-icono {
+    border: none;
+    background: none;
+    cursor: pointer;
+    outline: none;
+}
+
+.accion-icon:hover {
+    color: #29a84f;
+}
+
+
 
     input[type="submit"]:hover,
     input[type="reset"]:hover,

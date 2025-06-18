@@ -11,6 +11,7 @@ namespace ColonIA.Controllers
     {
         private readonly ColonIaContext context = new();
 
+
         [HttpGet]
         public ActionResult UsuariosOperador()
         {
@@ -25,10 +26,66 @@ namespace ColonIA.Controllers
         }
 
         [HttpGet]
-        public ActionResult UsuariosAdmin()
+        public ActionResult UsuariosAdmin(int page = 1)
         {
-            return View();
+            int pageSize = 3;
+
+            var query = context.Usuarios
+                .Include(u => u.IdRoleNavigation)
+                .OrderBy(u => u.NombreCompleto);
+
+            int totalUsuarios = query.Count();
+
+            var usuariosPaginados = query
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToList();
+
+            int totalPages = (int)Math.Ceiling((double)totalUsuarios / pageSize);
+
+            ViewBag.Page = page;
+            ViewBag.TotalPages = totalPages;
+
+            return View(usuariosPaginados);
         }
+
+
+
+        [HttpPost]
+        public IActionResult EditarUsuario(Usuario data)
+        {
+            var u = context.Usuarios.Find(data.IdUsuario);
+            if (u != null)
+            {
+                u.NombreCompleto = data.NombreCompleto;
+                u.Correo = data.Correo;
+                u.Telefono = data.Telefono;
+                u.Direccion = data.Direccion;
+                u.IdRole = data.IdRole;
+                if (!string.IsNullOrWhiteSpace(data.Contrasena))
+                    u.Contrasena = data.Contrasena;
+                context.SaveChanges();
+            }
+            return RedirectToAction(nameof(UsuariosAdmin));
+        }
+
+
+        [HttpPost]
+        public IActionResult EliminarUsuario(int id)
+        {
+            var u = context.Usuarios.Find(id);
+            if (u != null)
+            {
+                context.Usuarios.Remove(u);
+                context.SaveChanges();
+            }
+            return RedirectToAction(nameof(UsuariosAdmin));
+        }
+
+
+
+
+
 
         [HttpGet]
         public ActionResult UsuariosSupervisor()
