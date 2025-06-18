@@ -1,16 +1,11 @@
 ﻿@model Usuario
 @{
     ViewBag.Title = "Login";
+    Layout = "_LayoutExterno";
 }
 
 
 <div class="inner">
-
-    <!-- Header -->
-    <header id="header">
-        <a href="@Url.Action("Index", "Home")" class="logo"><strong>ColonIA</strong> by iCricket</a>
-    </header>
-
     <section>
         <div class="box card">
             <form asp-controller="User" asp-action="Login" method="post">
