@@ -21,7 +21,7 @@ namespace ColonIA.Controllers
         public ActionResult Logout()
         {
             HttpContext.Session.Clear();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "User");
         }
 
         [HttpGet]

@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <title>ColonIA</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/main.css" />
+</head>
+
+<body class="is-preload">
+    <div id="wrapper">
+        <!-- Main -->
+        <div id="main">
+            <!-- Mensaje de error del sistema. Se tiene que manejar mejor por medio de una alerta-->
+            <h3 class="alert-danger">@TempData["MensajeError"]</h3>
+            @RenderBody()
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="~/js/breakpoints.min.js"></script>
+    <script src="~/js/browser.min.js"></script>
+    <script src="~/js/jquery.min.js"></script>
+    <script src="~/js/main.js"></script>
+    <script src="~/js/util.js"></script>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
