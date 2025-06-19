@@ -3,7 +3,7 @@
 
     formularios.forEach(form => {
         form.addEventListener('submit', function (e) {
-            e.preventDefault(); // Previene el envío inmediato
+            e.preventDefault(); 
 
             const usuarioNombre = form.querySelector('button').getAttribute('data-nombre') || 'este usuario';
 
@@ -22,3 +22,5 @@
         });
     });
 });
+
+

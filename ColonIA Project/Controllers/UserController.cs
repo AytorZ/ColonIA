@@ -88,10 +88,70 @@ namespace ColonIA.Controllers
 
 
         [HttpGet]
-        public ActionResult UsuariosSupervisor()
+        public ActionResult UsuariosSupervisor(int page = 1)
         {
-            return View();
+            int pageSize = 8;
+
+            var query = context.Usuarios
+                .Include(u => u.IdRoleNavigation)
+                .Where(u => u.IdRole == 3)
+                .OrderBy(u => u.NombreCompleto);
+
+            int totalUsuarios = query.Count();
+
+            var usuariosPaginados = query
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToList();
+
+            int totalPages = (int)Math.Ceiling((double)totalUsuarios / pageSize);
+
+            ViewBag.Page = page;
+            ViewBag.TotalPages = totalPages;
+
+            return View(usuariosPaginados);
+
         }
+
+
+
+
+        [HttpPost]
+        public IActionResult EditarUsuarioSupervisor(Usuario data)
+        {
+            var u = context.Usuarios.Find(data.IdUsuario);
+            if (u != null && u.IdRole == 3)
+            {
+                u.NombreCompleto = data.NombreCompleto;
+                u.Correo = data.Correo;
+                u.Telefono = data.Telefono;
+                u.Direccion = data.Direccion;
+              
+                if (!string.IsNullOrWhiteSpace(data.Contrasena))
+                    u.Contrasena = data.Contrasena;
+                context.SaveChanges();
+            }
+            return RedirectToAction(nameof(UsuariosSupervisor));
+        }
+
+
+        [HttpPost]
+        public IActionResult EliminarUsuarioSupervisor(int id)
+        {
+            var u = context.Usuarios.Find(id);
+            if (u != null && u.IdRole == 3)
+            {
+                context.Usuarios.Remove(u);
+                context.SaveChanges();
+            }
+            return RedirectToAction(nameof(UsuariosSupervisor));
+        }
+
+
+
+
+
+
 
         [HttpGet]
         public ActionResult Login()

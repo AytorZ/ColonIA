@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ColonIA.Models;
 
-public partial class Usuario
+public partial class Usuario 
 {
     public int IdUsuario { get; set; }
 
