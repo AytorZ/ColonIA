@@ -57,8 +57,13 @@ namespace ColonIA.Controllers
                     return RedirectToAction("Index", "Home");
                 }
             }
+            else
+            {
+                ViewData["AutenticacionMsg"] = "Correo o contraseña incorrectos";
+                return View();
+            }
 
-            return View();
+                return View();
         }
 
         [HttpGet]

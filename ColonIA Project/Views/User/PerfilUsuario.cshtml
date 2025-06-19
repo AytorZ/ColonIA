@@ -5,82 +5,80 @@
 }
 
 <div class="inner">
-
-    <!-- Header -->
-    <header id="header" style="margin-bottom: 1cm;">
-        <a href="@Url.Action("Index", "Home")" class="logo"><strong>ColonIA</strong> by iCricket</a>
+    <header id="header">
+        <h2>Perfil</h2>
     </header>
-
-    <div class="card" style="margin-bottom: 1cm;">
-        <div class="card-body">
-            <div class="d-flex flex-column align-items-center text-center">
-                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
-                <div class="mt-3">
-                    <h4>@Model.NombreCompleto</h4>
-                    <p class="text-secondary mb-1">
-                        Rol:
-                        @switch (Model.IdRole)
-                        {
-                            case 1:
-                                @:Administrador
-                                break;
-                            case 2:
-                                @:Supervisor
-                                break;
-                            case 3:
-                                @:Operador
-                                break;
-                            default:
-                                @: Desconocido
-                                break;
-                        }
-                    </p>
-                    <p class="text-muted font-size-sm">@Model.Direccion</p>
+    <section>
+        <div class="card" style="margin-bottom: 1cm;">
+            <div class="card-body">
+                <div class="d-flex flex-column align-items-center text-center">
+                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+                    <div class="mt-3">
+                        <h4>@Model.NombreCompleto</h4>
+                        <p class="text-secondary mb-1">
+                            Rol:
+                            @switch (Model.IdRole)
+                            {
+                                case 1:
+                                    @:Administrador
+                                    break;
+                                case 2:
+                                    @:Supervisor
+                                    break;
+                                case 3:
+                                    @:Operador
+                                    break;
+                                default:
+                                    @: Desconocido
+                                    break;
+                            }
+                        </p>
+                        <p class="text-muted font-size-sm">@Model.Direccion</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="card mb-3" style="margin-bottom: 1cm;">
-        <div class="card-body">
-            <div class="row">
-                <div class="col-sm-3"><h6 class="mb-0">Nombre Completo</h6></div>
-                <div class="col-sm-9 text-secondary">@Model.NombreCompleto</div>
-            </div>
-            <hr>
-            <div class="row">
-                <div class="col-sm-3"><h6 class="mb-0">Correo Electrónico</h6></div>
-                <div class="col-sm-9 text-secondary">@Model.Correo</div>
-            </div>
-            <hr>
-            <div class="row">
-                <div class="col-sm-3"><h6 class="mb-0">Teléfono</h6></div>
-                <div class="col-sm-9 text-secondary">@Model.Telefono</div>
-            </div>
-            <hr>
-            <div class="row">
-                <div class="col-sm-3"><h6 class="mb-0">Contraseña</h6></div>
-                <div class="col-sm-9 text-secondary">
-                    @(new string('*', Model.Contrasena?.Length ?? 10))
+        <div class="card mb-3" style="margin-bottom: 1cm;">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-3"><h6 class="mb-0">Nombre Completo</h6></div>
+                    <div class="col-sm-9 text-secondary">@Model.NombreCompleto</div>
                 </div>
-            </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-3"><h6 class="mb-0">Correo Electrónico</h6></div>
+                    <div class="col-sm-9 text-secondary">@Model.Correo</div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-3"><h6 class="mb-0">Teléfono</h6></div>
+                    <div class="col-sm-9 text-secondary">@Model.Telefono</div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-3"><h6 class="mb-0">Contraseña</h6></div>
+                    <div class="col-sm-9 text-secondary">
+                        @(new string('*', Model.Contrasena?.Length ?? 10))
+                    </div>
+                </div>
 
-            <hr>
-            <div class="row">
-                <div class="col-sm-3"><h6 class="mb-0">Dirección</h6></div>
-                <div class="col-sm-9 text-secondary">@Model.Direccion</div>
-            </div>
-            <hr>
-            <div class="row">
-                <div class="col-sm-12 text-center">
-                    <button type="button" class="button primary fit" data-toggle="modal" data-target="#editModal">
-                        Editar
-                    </button>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-3"><h6 class="mb-0">Dirección</h6></div>
+                    <div class="col-sm-9 text-secondary">@Model.Direccion</div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-12 text-center">
+                        <button type="button" class="button primary fit" data-toggle="modal" data-target="#editModal">
+                            Editar
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-
+    </section>
 </div>
 
 <!-- Modal de edición de perfil -->

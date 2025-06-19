@@ -3003,7 +3003,7 @@ button,
     }
 
         #main > .inner > section {
-            padding: 5em 0 3em 0;
+            padding: 3em 0 3em 0;
         }
 }
 
@@ -3286,8 +3286,8 @@ button,
     display: -webkit-flex;
     display: -ms-flex;
     display: flex;
-    border-bottom: solid 5px #29a84f;
-    padding: 6em 0 1em 0;
+    border-bottom: solid 4px #29a84f;
+    padding: 0 0 1em 0;
     position: relative;
 }
 
@@ -3312,13 +3312,14 @@ button,
 
 @media screen and (max-width: 1680px) {
     #header {
-        padding-top: 5em;
+        padding-top: 1%;
     }
 }
 
 @media screen and (max-width: 736px) {
     #header {
-        padding-top: 6.5em;
+        padding-top: 1%;
+        text-align:end;
     }
 
         #header .logo {
